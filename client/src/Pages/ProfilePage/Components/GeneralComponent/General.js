@@ -21,7 +21,6 @@ function General() {
       axios
         .get(`http://localhost:4000/userDetails/${user.user_id}`)
         .then((res) => {
-            console.log(res.data.data)
             setUserDetails(res.data.data);
         })
         .catch((err) => console.log(err));
@@ -30,7 +29,6 @@ function General() {
 
   const submit = async () => {
     setLoading(true);
-    console.log(Hated.current.value,'X', Age.current.value)
     axios
       .put(
         `http://localhost:4000/userDetails/${user.user_id}/update`,
@@ -40,21 +38,19 @@ function General() {
           height: Height.current.value || userDetails.height,
           weight: Weight.current.value || userDetails.weight,
           allergies: Allergies.current.value || userDetails.allergies,
-          favoriteFood: Favorite.current.value || userDetails.favoriteFood,
-          nonFavoriteFood: Hated.current.value || userDetails.nonFavoriteFood,
+          favoriteFood: Favorite.current.value || userDetails.favoritefood,
+          nonFavoriteFood: Hated.current.value || userDetails.nonfavoritefood,
         },
         { withCredentials: true }
       )
       .then((res) => {
         setLoading(false);
-        console.log(res);
-        // alert("Successfully updated!");
-        // window.location.reload();
+        alert("Successfully updated!");
+        window.location.reload();
       })
       .catch((err) => {
         setLoading(false);
-        // alert("User Failed to update");
-        // console.log(err);
+        alert("User Failed to update");
       });
   };
 

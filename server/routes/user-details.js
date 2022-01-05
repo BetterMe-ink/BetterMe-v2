@@ -11,6 +11,7 @@ router.get("/:id", async (req, res) => {
     if (err) {
       return res.status(400).send("Error showing user details");
     }
+    console.log(result.rows[0])
     return res.status(200).json({ data: result.rows[0] });
   });
 });
