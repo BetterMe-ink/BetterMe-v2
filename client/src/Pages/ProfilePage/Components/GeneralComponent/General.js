@@ -72,7 +72,7 @@ function General() {
 
                     <label htmlFor="">Diet</label>
                     <br />
-                    <input ref={Diet} type="text" placeholder="Enter your new Password..." />
+                    <input ref={Diet} type="text" placeholder="Enter your new Diet..." />
 
                     <br /><br />
 
@@ -88,7 +88,7 @@ function General() {
 
                     <label htmlFor="">Favourite Food</label>
                     <br />
-                    <input ref={Favourite} type="text" placeholder="Enter your new Favourite..." />
+                    <input ref={Favourite} type="text" placeholder="Enter your new Favourite Food..." />
 
                     <br /><br /><br />
                     <button onClick={() => console.log('value')}>Submit Changes</button>

@@ -58,13 +58,13 @@ function SignUpPage() {
 
                                 <label htmlFor="username">Username</label>
                                 <br />
-                                <input ref={Username} id='username' type="text" placeholder='Enter Your Password...' />
+                                <input ref={Username} id='username' type="text" placeholder='Enter Your Username...' />
 
                                 <br /><br />
 
                                 <label htmlFor="email">Email</label>
                                 <br />
-                                <input ref={Email} id='email' type="text" placeholder='Enter Your Password...' />
+                                <input ref={Email} id='email' type="text" placeholder='Enter Your Email...' />
 
                                 <br /><br /><br />
                                 

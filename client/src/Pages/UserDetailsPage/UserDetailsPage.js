@@ -68,14 +68,14 @@ function UserDetailsPage() {
                         
                         <label htmlFor="height">Height</label>
                         <br />
-                        <input ref={Height} type="text" id='height' placeholder='Enter Your Age...' />
+                        <input ref={Height} type="text" id='height' placeholder='Enter Your Height...' />
 
                         <br />
                         <br />
                         
                         <label  htmlFor="weight">Weight</label>
                         <br />
-                        <input ref={Weight} type="text" id='weight' placeholder='Enter Your Height...' />
+                        <input ref={Weight} type="text" id='weight' placeholder='Enter Your Weight...' />
 
                         <br />
                         <br />

@@ -13,7 +13,7 @@ function Account() {
   const Email = useRef(null);
   const Username = useRef(null);
   const Password = useRef(null);
-
+  
   const submit = async () => {
     setLoading(true)
     axios.put(`http://localhost:4000/users/${user.user_id}/updateProfile`, {
