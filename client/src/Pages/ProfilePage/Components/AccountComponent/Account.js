@@ -3,17 +3,19 @@ import style from "./Account.module.scss";
 import { useSelector } from 'react-redux';
 import axios from "axios";
 
+
+
 function Account() {
-
   const [loading, setLoading] = useState(false);
-
   const user = useSelector(state => state.user.user);
-  
+
+
+
   const FullName = useRef(null);
   const Email = useRef(null);
   const Username = useRef(null);
   const Password = useRef(null);
-  
+
   const submit = async () => {
     setLoading(true)
     axios.put(`http://localhost:4000/users/${user.user_id}/updateProfile`, {
@@ -48,7 +50,7 @@ function Account() {
           <h1> Current Full name: { user.fullname }</h1>
           <h1> Current User name: { user.username }</h1>
           <h1> Current Email: {user.email}</h1>
-          <h1> Current Password: {user.password.slice(0,4)}*****</h1>
+          <h1> Days since Becoming Better: {user.date_joined}</h1>
         </div>
 
         { loading ? 
