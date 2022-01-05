@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db-models/db-models.js");
 const appControllers = require("../controller/controller.js");
+const bcrypt = require('bcrypt')
+
 
 router.post("/signup", appControllers.signup, (req, res) => {
   console.log("this is the message: ", res.locals.message);

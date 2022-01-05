@@ -1,5 +1,5 @@
 const db = require("../db-models/db-models");
-
+const bcrypt = require('bcrypt')
 const appControllers = {};
 
 //CONTROLLERS HERE
@@ -7,25 +7,45 @@ const appControllers = {};
 appControllers.login = async (req, res, next) => {
   const { username, password } = req.body;
   console.log("this is username from controllers:", username);
-  const q = "SELECT * FROM users WHERE username=($1) AND password=($2)";
-  await db.query(q, [username, password], (err, data) => {
+  
+  const q = "SELECT * FROM users WHERE username=($1)";
+  db.query(q, [username], (err, data) => {
     if (err) {
       return next(err);
     }
     if (data.rows.length > 0) {
-      console.log("user exist");
-      res.cookie("user", JSON.stringify(data.rows[0]), {
-        maxAge: 900000,
-        httpOnly: false,
-      });
-      res.locals.message = "successfully logged in";
-      return next();
-    } else {
-      res.locals.error = "wrong username or password";
-      return next();
-    }
-  });
-};
+      bcrypt.compare(password, data.rows[0].password) 
+      .then((result) => {
+        if(result){
+          console.log(result);
+          res.locals.message = "successfully logged in";
+          const {
+            user_id, 
+            fullname, 
+            username, 
+            email, 
+            date_joined
+          } = data.rows[0]
+          res.cookie("user", JSON.stringify({
+            user_id, 
+            fullname, 
+            username, 
+            email, 
+            date_joined
+          }), {
+            maxAge: 1000*60*60*24*7*3,
+            httpOnly: false,
+          });
+          return next()
+        } else {
+          res.locals.error = "wrong username or password";
+          return next()
+        }
+      })
+      .catch((err) => console.log(err))
+    } 
+  })
+}
 
 appControllers.signup = async (req, res, next) => {
   const { fullName, username, password, email } = req.body;
@@ -38,8 +58,8 @@ appControllers.signup = async (req, res, next) => {
   // if username is empty/less than x characters
   if (username.length === 0) {
     validationErrors.username = "username is required";
-  } else if (username.length < 6) {
-    validationErrors.username = "Username must be min 6 characters";
+  } else if (username.length < 4) {
+    validationErrors.username = "Username must be min 4 characters";
   } else if (username.length > 20) {
     validationErrors.username = "Username must be max 20 characters";
   }
@@ -85,9 +105,12 @@ appControllers.signup = async (req, res, next) => {
         "Account with this username/email already exists. Please try with different username/email";
       next();
     } else {
+      const hash = await bcrypt.hash(password, 10)
+      console.log(hash)
+      
       await db.query(
         "INSERT INTO users (username, fullName, password, email) VALUES (($1), ($2), ($3), ($4))",
-        [username, fullName, password, email],
+        [username, fullName, hash, email],
         async (err, data) => {
           if (err) {
             return next(err);
@@ -101,8 +124,8 @@ appControllers.signup = async (req, res, next) => {
               // console.log(data.rows[0]);
 
               res.cookie("user", JSON.stringify(data.rows[0]), {
-                maxAge: 90000,
-                httpOnly: false,
+                maxAge: 1000*60*60*24*7*3,
+                httpOnly: false
               });
               res.locals.message = "Successfully Signed Up!";
               return next();
