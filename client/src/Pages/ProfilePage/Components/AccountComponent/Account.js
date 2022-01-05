@@ -18,11 +18,12 @@ function Account() {
 
   const submit = async () => {
     setLoading(true)
+    console.log(FullName.current.value, Username.current.value)
     axios.put(`http://localhost:4000/users/${user.user_id}/updateProfile`, {
-      fullName: FullName.current.value,
-      email: Email.current.value,
-      username: Username.current.value,
-      password: Password.current.value,
+      fullName: FullName.current.value || user.fullname,
+      email: Email.current.value || user.email,
+      username: Username.current.value || user.username,
+      password: Password.current.value || user.password,
     }, { withCredentials: true })
     .then((res) => {
       setLoading(false);
@@ -50,7 +51,7 @@ function Account() {
           <h1> Current Full name: { user.fullname }</h1>
           <h1> Current User name: { user.username }</h1>
           <h1> Current Email: {user.email}</h1>
-          <h1> Days since Becoming Better: {user.date_joined}</h1>
+          <h1> Days Since Becoming Better: {user.date_joined}</h1>
         </div>
 
         { loading ? 
@@ -77,7 +78,7 @@ function Account() {
 
               <label htmlFor="">Password</label>
               <br />
-              <input ref={Password} type="text" placeholder="Enter your new Password..." />
+              <input ref={Password} type="password" placeholder="Enter your new Password..." />
 
               <br /><br /><br />
               <button onClick={submit}>Submit Changes</button>
