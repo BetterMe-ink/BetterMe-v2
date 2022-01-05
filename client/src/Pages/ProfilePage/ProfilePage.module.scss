@@ -57,10 +57,10 @@
   }
 
   div:hover {
-    background-color: rgb(17, 17, 17, 0.5);
+    background-color: v.$blackishOpaque;
   }
 }
 
 .active {
-  background-color: rgb(17, 17, 17, 0.5);
+  background-color: v.$blackishOpaque;
 }
