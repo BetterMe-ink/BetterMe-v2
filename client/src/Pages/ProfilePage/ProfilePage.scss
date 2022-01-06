@@ -31,10 +31,6 @@
 .ProfilePage-main {
   display: flex;
   flex-direction: row;
-  @include v.theme() {
-    background-color: v.theme-get('bg-color');
-    color: v.theme-get('text-color');
-  }
 }
 
 .ProfilePage-container {
@@ -50,8 +46,7 @@
   }
 
   @include v.theme() {
-    background-color: v.theme-get('bg-color');
-    color: v.theme-get('test');
+    background-color: v.theme-get('secondary1');
   }
 }
 
