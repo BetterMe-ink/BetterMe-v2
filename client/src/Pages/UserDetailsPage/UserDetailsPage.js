@@ -16,7 +16,7 @@ function UserDetailsPage() {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        if (!user) navigate('/signup');
+        if(!user) setTimeout(()=>navigate('/signup'), 1000)
     })
     
     const Age = useRef(null);
@@ -29,7 +29,7 @@ function UserDetailsPage() {
     
     const createEntry = async () => {
         setLoading(true);
-        axios.post(`http://localhost:4000/userDetails/${user.user_id}/create`, {
+        axios.post(`http://localhost:4000/users/details/${user.user_id}`, {
             user_id: user.user_id,
             height: Height.current.value,
             weight: Weight.current.value,

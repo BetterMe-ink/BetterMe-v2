@@ -10,7 +10,7 @@ function MealPage() {
     const user = useSelector(state => state.user.user);
 
     useEffect(()=>{
-        if(!user) navigate('/signup')
+        if(!user) setTimeout(()=>navigate('/signup'), 1000)
     });
 
     return (
