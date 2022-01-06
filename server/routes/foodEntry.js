@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../db-models/db-models.js");
-const appControllers = require("../controller/controller.js");
+const appControllers = require("../controller/userController.js");
 const bcrypt = require("bcrypt");
 const foodEntryController = require('../controller/foodEntryController');
 

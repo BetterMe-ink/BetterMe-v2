@@ -19,9 +19,9 @@ function General() {
   useEffect(() => {
     if (user) {
       axios
-        .get(`http://localhost:4000/userDetails/${user.user_id}`)
+        .get(`http://localhost:4000/users/details/${user.user_id}`)
         .then((res) => {
-            setUserDetails(res.data.data);
+            setUserDetails(res.data);
         })
         .catch((err) => console.log(err));
     }
@@ -31,7 +31,7 @@ function General() {
     setLoading(true);
     axios
       .put(
-        `http://localhost:4000/userDetails/${user.user_id}/update`,
+        `http://localhost:4000/users/details/${user.user_id}`,
         {
           diet_type: Diet.current.value || userDetails.diet_type,
           age: Age.current.value || userDetails.age,
