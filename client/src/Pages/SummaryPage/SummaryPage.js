@@ -24,6 +24,8 @@ function SummaryPage() {
 
     }, [navigate, user]);
 
+    console.log(data)
+
     return (
         <>
             <Nav />

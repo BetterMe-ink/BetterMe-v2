@@ -29,7 +29,7 @@ function UserDetailsPage() {
     
     const createEntry = async () => {
         setLoading(true);
-        axios.post(`http://localhost:4000/users/details/${user.user_id}`, {
+        axios.post(`http://localhost:4000/userDetails/${user.user_id}/create`, {
             user_id: user.user_id,
             height: Height.current.value,
             weight: Weight.current.value,
@@ -68,14 +68,14 @@ function UserDetailsPage() {
                         
                         <label htmlFor="height">Height</label>
                         <br />
-                        <input ref={Height} type="text" id='height' placeholder='Enter Your Height...' />
+                        <input ref={Height} type="text" id='height' placeholder='Enter Your Age...' />
 
                         <br />
                         <br />
                         
                         <label  htmlFor="weight">Weight</label>
                         <br />
-                        <input ref={Weight} type="text" id='weight' placeholder='Enter Your Weight...' />
+                        <input ref={Weight} type="text" id='weight' placeholder='Enter Your Height...' />
 
                         <br />
                         <br />
