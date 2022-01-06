@@ -35,7 +35,7 @@ function ProfilePage() {
         if (!user) navigate('/signup');
     });
 
-    console.log(user);
+    // console.log(user);
 
     return (
         <>
@@ -112,13 +112,51 @@ function ProfilePage() {
                         { active === 'General' ? 
                             <General />
                         : active === 'Settings' ? 
-                            <h1>Setting Components</h1>
+                            <div>
+                                <h1>Setting Components</h1>
+                                <br /><br />
+                                <div className={style.settingsSection}>
+                                    <p>Toggle Dark Mode</p>
+                                    <label className={style.switch}>
+                                        <input type="checkbox" />
+                                        <span className={`${style.slider} ${style.round}`} ></span>
+                                    </label>
+                                </div>
+                            </div>
                         : active === 'Account' ? 
                             <Account />
                         : active === 'Help' ? 
-                            <h1>Help Component</h1>
+                            <div>
+                                <h1>Help Component</h1>
+                                <br /><br />
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi accusantium, delectus, mollitia eaque vero maxime laborum consequatur saepe ab, amet illo animi molestias iure optio corrupti error corporis minus. Aliquid.</p>
+                                <br />
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quisquam natus odio harum ab. Magni iste a perferendis sit suscipit. Porro perspiciatis quibusdam rerum corrupti architecto ea optio adipisci exercitationem.</p>
+                                <br />
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, perferendis earum officiis ratione dignissimos optio libero quia cumque, tempore atque rerum non alias distinctio beatae enim, vero architecto. Ex, sint.</p>
+                                <br />
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi accusantium, delectus, mollitia eaque vero maxime laborum consequatur saepe ab, amet illo animi molestias iure optio corrupti error corporis minus. Aliquid.</p>
+                                <br />
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quisquam natus odio harum ab. Magni iste a perferendis sit suscipit. Porro perspiciatis quibusdam rerum corrupti architecto ea optio adipisci exercitationem.</p>
+                                <br />
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, perferendis earum officiis ratione dignissimos optio libero quia cumque, tempore atque rerum non alias distinctio beatae enim, vero architecto. Ex, sint.</p>
+                            </div>
                         : active === 'Privacy' ? 
-                            <h1>Privacy & Safety</h1>
+                        <div>
+                                <h1>Privacy & Safety</h1>
+                                <br /><br />
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi accusantium, delectus, mollitia eaque vero maxime laborum consequatur saepe ab, amet illo animi molestias iure optio corrupti error corporis minus. Aliquid.</p>
+                                <br />
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quisquam natus odio harum ab. Magni iste a perferendis sit suscipit. Porro perspiciatis quibusdam rerum corrupti architecto ea optio adipisci exercitationem.</p>
+                                <br />
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, perferendis earum officiis ratione dignissimos optio libero quia cumque, tempore atque rerum non alias distinctio beatae enim, vero architecto. Ex, sint.</p>
+                                <br />
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eligendi accusantium, delectus, mollitia eaque vero maxime laborum consequatur saepe ab, amet illo animi molestias iure optio corrupti error corporis minus. Aliquid.</p>
+                                <br />
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium quisquam natus odio harum ab. Magni iste a perferendis sit suscipit. Porro perspiciatis quibusdam rerum corrupti architecto ea optio adipisci exercitationem.</p>
+                                <br />
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, perferendis earum officiis ratione dignissimos optio libero quia cumque, tempore atque rerum non alias distinctio beatae enim, vero architecto. Ex, sint.</p>
+                            </div>
                         : ''}
                     </div>
                 </div>
