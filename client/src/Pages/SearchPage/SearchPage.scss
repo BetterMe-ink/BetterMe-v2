@@ -37,13 +37,16 @@
   }
 
   @include v.theme() {
-    background-color: v.theme-get('default-opposite');
+    background-color: v.theme-get('default-medium');
   }
 }
 
 .SearchPage-search {
   margin-left: 20px;
   cursor: pointer;
+  @include v.theme() {
+    background-color: v.theme-get('default-medium');
+  }
 }
 
 .SearchPage-content {
