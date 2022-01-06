@@ -1,15 +1,11 @@
-import { useRef, useState } from "react";
-import style from "./Account.module.scss";
+import { useRef, useState } from 'react';
+import style from './Account.module.scss';
 import { useSelector } from 'react-redux';
-import axios from "axios";
-
-
+import axios from 'axios';
 
 function Account() {
   const [loading, setLoading] = useState(false);
-  const user = useSelector(state => state.user.user);
-
-
+  const user = useSelector((state) => state.user.user);
 
   const FullName = useRef(null);
   const Email = useRef(null);
@@ -17,73 +13,78 @@ function Account() {
   const Password = useRef(null);
 
   const submit = async () => {
-    setLoading(true)
-    axios.put(`http://localhost:4000/users/${user.user_id}`, {
-      fullName: FullName.current.value || user.fullname,
-      email: Email.current.value || user.email,
-      username: Username.current.value || user.username,
-      password: Password.current.value || user.password,
-    }, { withCredentials: true })
-    .then((res) => {
-      setLoading(false);
-      alert('Successfully updated!');
-      window.location.reload();
-    })
-    .catch((err) => {
-      setLoading(false);
-      alert('User Failed to update');
-      console.log(err);
-    });
-  }
+    setLoading(true);
+    axios
+      .put(
+        `http://localhost:4000/users/${user.user_id}`,
+        {
+          fullName: FullName.current.value || user.fullname,
+          email: Email.current.value || user.email,
+          username: Username.current.value || user.username,
+          password: Password.current.value || user.password,
+        },
+        { withCredentials: true }
+      )
+      .then((res) => {
+        setLoading(false);
+        alert('Successfully updated!');
+        window.location.reload();
+      })
+      .catch((err) => {
+        setLoading(false);
+        alert('User Failed to update');
+        console.log(err);
+      });
+  };
 
   return (
     <div className={style.main}>
-
       <h1>Welcome to Account settings</h1>
       <br />
       <p>Change your account information</p>
 
       <div className={style.container}>
-
         <div className={style.account}>
-          <h1> Current Full name: { user.fullname }</h1>
-          <h1> Current User name: { user.username }</h1>
+          <h1> Current Full name: {user.fullname}</h1>
+          <h1> Current User name: {user.username}</h1>
           <h1> Current Email: {user.email}</h1>
           <h1> Days Since Becoming Better: {user.date_joined}</h1>
         </div>
 
-        { loading ? 
+        {loading ? (
           <div className={style.loadingDiv}>
             <div className={style.loader}></div>
           </div>
-        :
-
+        ) : (
           <form className={style.content}>
-              <label htmlFor="">Full Name</label>
-              <br />
-              <input ref={FullName} type="text" placeholder="Enter your new Full Name" />
-              <br /><br />
+            <label htmlFor=''>Full Name</label>
+            <br />
+            <input ref={FullName} type='text' placeholder='Enter your new Full Name' />
+            <br />
+            <br />
 
-              <label htmlFor="">Username</label>
-              <br />
-              <input ref={Username} type="text" placeholder="Enter your new Username" />
-              <br /><br />
+            <label htmlFor=''>Username</label>
+            <br />
+            <input ref={Username} type='text' placeholder='Enter your new Username' />
+            <br />
+            <br />
 
-              <label htmlFor="">Email</label>
-              <br />
-              <input ref={Email} type="text" placeholder="Enter your new Email..." />
-              <br /><br />
+            <label htmlFor=''>Email</label>
+            <br />
+            <input ref={Email} type='text' placeholder='Enter your new Email...' />
+            <br />
+            <br />
 
-              <label htmlFor="">Password</label>
-              <br />
-              <input ref={Password} type="password" placeholder="Enter your new Password..." />
+            <label htmlFor=''>Password</label>
+            <br />
+            <input ref={Password} type='password' placeholder='Enter your new Password...' />
 
-              <br /><br /><br />
-              <button onClick={submit}>Submit Changes</button>
+            <br />
+            <br />
+            <br />
+            <button onClick={submit}>Submit Changes</button>
           </form>
-
-        }
-
+        )}
       </div>
     </div>
   );

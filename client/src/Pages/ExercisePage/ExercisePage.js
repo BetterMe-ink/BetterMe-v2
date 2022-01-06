@@ -79,17 +79,17 @@ function ExercisePage() {
     <>
       <Nav transition={true} />
       <div>
-        <div className={'Exercise-Hero'} style={{ backgroundImage: `url(${lifeStyle})` }}>
+        <div className={'ExercisePage-Hero'} style={{ backgroundImage: `url(${lifeStyle})` }}>
           <h1>Find Your Next Gym Routine</h1>
-          <div className={'Exercise-Bar'}>
+          <div className={'ExercisePage-Bar'}>
             <input ref={Search} type='text' placeholder='Enter The Name Of muscle you which to target...' />
-            <Icon onClick={newSearch} className={'Exercise-search'} path={mdiMagnify} size={1.5} />
+            <Icon onClick={newSearch} className={'ExercisePage-search'} path={mdiMagnify} size={1.5} />
           </div>
         </div>
       </div>
       <br />
-      <div className={'Exercise-content'}>
-        <div className={'Exercise-container'}>
+      <div className={'ExercisePage-content'}>
+        <div className={'ExercisePage-container'}>
           {data &&
             data.map((item, idx) => {
               return (
