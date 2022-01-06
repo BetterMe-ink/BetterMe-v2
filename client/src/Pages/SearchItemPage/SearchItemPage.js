@@ -24,11 +24,7 @@ function SearchItemPage() {
             .catch(err => console.log(err));
     }, [id])
 
-    // const item = JSON.parse(localStorage.getItem('item'));
-    console.log(item);
-
     const user = useSelector(state => state.user.user);
-    console.log(user);
 
     const addFav = async () => {
         await axios.post(`http://localhost:4000/favorites/${user.user_id}/create`, {
