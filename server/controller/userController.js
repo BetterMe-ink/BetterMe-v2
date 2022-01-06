@@ -13,7 +13,8 @@ userController.login = (req, res, next) => {
     if (err) return next(err);
     if (data.rows.length > 0) {
       bcrypt.compare(password, data.rows[0].password) 
-      .then((result) => {
+      .then((err, result) => {
+        if(err) return next(err)
         if(result){
           res.locals.message = "successfully logged in";
           const {user_id, fullname, username, email, date_joined} = data.rows[0]
@@ -22,25 +23,28 @@ userController.login = (req, res, next) => {
             httpOnly: false,
           });
           return next()
-        } else {
-          res.locals.error = "wrong username or password";
-          return next()
         }
       })
-      .catch((err) => next(err))
+    } else {
+      res.locals.error = "wrong username or password";
+      return next()
     }
   })
+  res.locals.error = "wrong username"
+  return next()
 }
 
 userController.signup = (req, res, next) => {
   const { fullName, username, password, email } = req.body;
+  console.log(req.body)
+  console.log(fullName, username, password, email)
   const q = "SELECT * FROM users WHERE username=($1) OR email=($2)";
   try {
     db.query(q, [username, email], async (err, user)=>{
+      console.log(err, user.rows)
       if (user.rows.length > 0) {
-        res.locals.error =
-        "Account with this username/email already exists. Please try with different username/email";
-        next();
+        return next({error:
+        "Account with this username/email already exists. Please try with different username/email"});
       } else {
         try {
           const hash = await bcrypt.hash(password, 10)
