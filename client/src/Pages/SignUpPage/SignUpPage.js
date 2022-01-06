@@ -20,16 +20,13 @@ function SignUpPage() {
 
     const submit = async () => {
         setLoading(true);
-        await axios.post('http://localhost:4000/users/signup', {
+        await axios.post('http://localhost:4000/users', {
                 fullName: FullName.current.value,
                 username: Username.current.value,
                 email: Email.current.value,
                 password: Password.current.value,
         }, { withCredentials: true })
             .then((res) => {
-                console.log(res);
-                // navigate('/userdetails');
-                // setLoading(false);
                 window.location.replace('/userdetails');
             })
             .catch((err) => {
