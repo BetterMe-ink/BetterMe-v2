@@ -58,7 +58,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $cadet;
+  background-color: v.$cadet;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -102,7 +102,7 @@ input:checked + .slider:before {
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: $cadet;
+  color: v.$cadet;
 
   label {
     margin-left: 30px;
