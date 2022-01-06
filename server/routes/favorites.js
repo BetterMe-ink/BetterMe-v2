@@ -23,12 +23,10 @@ router.post("/:id/create", async (req, res) => {
   const q1 = "SELECT * from favorites where user_id=($1) and food_id=($2)"
 
   await db.query(q1, [id, food_id], (err, result) => {
-    console.log(result, err)
     if (err) {
       return res.status(400).send("Error creating favorites");
     } else if (result.rows.length > 0) {
       res.json({message : "You've already added this recipe to your favorites!"})
-      console.log('oopsie');
       return;
     } else if (result.rows.length === 0) {
 

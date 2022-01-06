@@ -16,6 +16,7 @@ export const userSlice = createSlice({
             state.user = action.payload
         },
         logout: (state) => {
+            Cookie.remove('user')
             state.user = null;
         }
     }
