@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BoringGreenFood from '../../images/boringGreenFood.jpeg';
 
-import style from './HomePage.module.scss';
+import './HomePage.scss';
 import Nav from '../../Components/Navigation/Navigation';
 import Footer from '../../Components/Footer/Footer';
 
@@ -20,20 +20,20 @@ function HomePage() {
     <>
       <Nav transition={true} />
       <div>
-        <div className={style.Hero} style={{ backgroundImage: `url(${BoringGreenFood})` }}>
-          <div className={style.titleBlock}>
-            <h1 className={style.title}>Better Me</h1>
+        <div className={'HomePage-Hero'} style={{ backgroundImage: `url(${BoringGreenFood})` }}>
+          <div className={'HomePage-titleBlock'}>
+            <h1 className={'HomePage-title'}>Better Me</h1>
             <h2>the only nutrition app you'll ever need</h2>
           </div>
         </div>
-        <div className={style.main}>
-          <div className={style.container}>
-            <div className={style.headTitle}>
+        <div className={'HomePage-main'}>
+          <div className={'HomePage-container'}>
+            <div className={'HomePage-headTitle'}>
               <h1>Want to find some </h1>
               <h1>pretty cool recipes</h1>
               <button onClick={() => navigate('/search')}>Find More</button>
             </div>
-            <div className={style.headBlur}>
+            <div className={'HomePage-headBlur'}>
               <h1>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam magnam doloremque odit similique alias! Nisi iste modi sed similique accusantium
                 odit, nam eum dolorem cum ipsam eligendi dicta molestias unde!
@@ -41,8 +41,8 @@ function HomePage() {
             </div>
           </div>
 
-          <div className={style.imageContainer}>
-            <div className={style.imageInfo}>
+          <div className={'HomePage-imageContainer'}>
+            <div className={'HomePage-imageInfo'}>
               <h3>What makes us different</h3>
               <p>we provide a free means to get you </p>
               <p>to your health goals</p>
@@ -50,13 +50,13 @@ function HomePage() {
               <h2>you'll have to sign up to find out what they are</h2>
               <button onClick={() => navigate('/signup')}>Join us</button>
             </div>
-            <div style={{ backgroundImage: `url(${photo})` }} className={style.imageContent} />
+            <div style={{ backgroundImage: `url(${photo})` }} className={'HomePage-imageContent'} />
           </div>
 
-          <div className={style.pitch}>
-            <div className={style.pitchContent}>
-              <div style={{ backgroundImage: `url(${pitch})` }} className={style.pitchImg}></div>
-              <div className={style.pitch1}>
+          <div className={'HomePage-pitch'}>
+            <div className={'HomePage-pitchContent'}>
+              <div style={{ backgroundImage: `url(${pitch})` }} className={'HomePage-pitchImg'}></div>
+              <div className={'HomePage-pitch1'}>
                 <h1>About Us</h1>
                 <br />
                 <br />
@@ -83,7 +83,7 @@ function HomePage() {
             </div>
           </div>
 
-          <div className={style.infoDiv}>
+          <div className={'HomePage-infoDiv'}>
             <h1>What makes us special</h1>
             <p>We provide all you need to achieve your</p>
             <p>fitness and health goals in one singular place</p>
@@ -91,7 +91,7 @@ function HomePage() {
             <br />
             <br />
             <br />
-            <div className={style.infoContent}>
+            <div className={'HomePage-infoContent'}>
               <InfoCard data={data.data1} />
               <InfoCard data={data.data2} />
               <InfoCard data={data.data3} />
@@ -100,16 +100,16 @@ function HomePage() {
             </div>
           </div>
 
-          <div className={style.teamContainer}>
+          <div className={'HomePage-teamContainer'}>
             <h1> Our Team </h1>
             <p>Follow there lins to stay up to date with them</p>
 
-            <div className={style.team}>
-              <div className={style.teamCol1}>
+            <div className={'HomePage-team'}>
+              <div className={'HomePage-teamCol1'}>
                 <h1>Marcel Palmer</h1>
                 <h1>Nicholas Gonzalez</h1>
               </div>
-              <div className={style.teamCol2}>
+              <div className={'HomePage-teamCol2'}>
                 <h1>Evan Preedy</h1>
                 <h1>Sercan Tuna</h1>
               </div>
@@ -117,7 +117,7 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div className={style.bottomHero} style={{ backgroundImage: `url(${img})` }} />
+      <div className={'HomePage-bottomHero'} style={{ backgroundImage: `url(${img})` }} />
       <Footer />
     </>
   );

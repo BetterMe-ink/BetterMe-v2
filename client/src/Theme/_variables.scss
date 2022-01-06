@@ -16,6 +16,9 @@ $green-sheen: #64b6acff; // tertiary1
 $celeste: #c0fdfbff; // tertiary2
 $aero-blue: #daffefff; // tertiary3
 
+$image-container: rgb(100, 182, 172, 0.3);
+$image-info-text: rgb(93, 115, 126, 0.8);
+
 // dark
 $smokey-black: #0f0a0a; // primary
 
@@ -49,6 +52,8 @@ $themes: (
     'tertiary1': $green-sheen,
     'tertiary2': $celeste,
     'tertiary3': $aero-blue,
+    'image-container': $image-container,
+    'image-info-text': $image-info-text,
   ),
 );
 
