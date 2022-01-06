@@ -32,7 +32,7 @@ function ProfilePage() {
     const [active, setActive] = useState('General');
 
     useEffect(()=> {
-        if (!user) navigate('/signup');
+        if(!user) setTimeout(()=>navigate('/signup'), 1000)
     });
 
     return (
