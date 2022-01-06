@@ -31,6 +31,8 @@ $themes: (
   dark: (
     'text-color': $white,
     'bg-color': #424242,
+    'default-color': $white,
+    'default-opposite': $black,
   ),
   light: (
     'text-color': $smoky-black,
