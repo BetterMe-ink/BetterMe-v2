@@ -6,22 +6,20 @@ import Nav from '../../Components/Navigation/Navigation';
 import Footer from '../../Components/Footer/Footer';
 
 function MealPage() {
-    const navigate = useNavigate();
-    const user = useSelector(state => state.user.user);
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user.user);
 
-    useEffect(()=>{
-        if(!user) setTimeout(()=>navigate('/signup'), 1000)
-    });
+  useEffect(() => {
+    if (!user) setTimeout(() => navigate('/signup'), 1000);
+  });
 
-    return (
-        <>
-            <Nav />
-                <div>
-
-                </div>
-            <Footer />
-        </>
-    )
+  return (
+    <>
+      <Nav />
+      <div></div>
+      <Footer />
+    </>
+  );
 }
 
-export default MealPage
+export default MealPage;
