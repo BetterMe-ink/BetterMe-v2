@@ -27,7 +27,12 @@ function SignUpPage() {
                 password: Password.current.value,
         }, { withCredentials: true })
             .then((res) => {
-                window.location.replace('/userdetails');
+                if(res.data){
+                    window.location.replace('/userdetails');
+                } else {
+                    alert('this username or password already exists')
+                    window.location.replace('/signup');
+                }
             })
             .catch((err) => {
                 setLoading(false);
