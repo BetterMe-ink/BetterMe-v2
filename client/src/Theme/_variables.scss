@@ -4,7 +4,8 @@ $white: #ffffff; // white
 $blackish: #111;
 $blackishOpaque: #11111180;
 $blackAndBlue: #001011; // blackish
-$lightGray: rgb(17, 17, 17, 0.1);
+$light-gray: rgb(17, 17, 17, 0.1);
+$medium-gray: rgb(17, 17, 17, 0.3);
 
 $cadet: #5d737eff; // primary1
 
@@ -44,7 +45,8 @@ $themes: (
     'default-opposite': $white,
     'defaultish-color': $blackish,
     'defaultish-opaque': $blackishOpaque,
-    'default-light': $lightGray,
+    'default-light': $light-gray,
+    'default-medium': $medium-gray,
     'primary1': $cadet,
     'secondary1': $baby-powder,
     'secondary2': $mint-cream,
