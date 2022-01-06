@@ -1,0 +1,38 @@
+$black: #000000; // black
+$white: #ffffff; // white
+// Light
+$blackish: #111;
+$blackishOpaque: #11111180;
+$blackAndBlue: #001011; // blackish
+
+$cadet: #5d737eff; // primary
+
+$baby-powder: #fcfffdff; // secondary
+$mint-cream: #f4fff8ff; // secondary
+$pewter-blue: #8baaadff; // secondary
+
+$green-sheen: #64b6acff; // tertiary
+$celeste: #c0fdfbff; // tertiary
+$aero-blue: #daffefff; // tertiary
+
+// dark
+$smokey-black: #0f0a0a; // primary
+
+$rich-black-fogra-39: #040303ff;
+$smoky-black: #0f0a0aff;
+$wintergreen-dream: #4f8b84ff;
+$green-sheen: #64b6acff;
+$celeste: #c0fdfbff;
+$light-cyan: #d0fdfbff;
+$light-cyan-2: #dcfdfbff;
+
+$themes: (
+  darkTheme: (
+    'text-color': $white,
+    'bg-color': #424242,
+  ),
+  lightTheme: (
+    'text-color': $black,
+    'bg-color': $baby-powder,
+  ),
+);

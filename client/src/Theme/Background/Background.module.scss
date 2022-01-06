@@ -1,0 +1,10 @@
+@use '../variables' as v;
+@import '../functions';
+@import '../mixins';
+
+.bg {
+  @include theme() {
+    --tw-bg-opacity: 1;
+    background-color: theme-get('bg-color');
+  }
+}
