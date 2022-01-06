@@ -16,7 +16,7 @@ function UserDetailsPage() {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        if (!user) navigate('/signup');
+        if(!user) setTimeout(()=>navigate('/signup'), 1000)
     })
     
     const Age = useRef(null);
