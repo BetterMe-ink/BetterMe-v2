@@ -17,15 +17,14 @@ router.post("/login", userController.login, (req, res) => {
 router.put("/:id", userController.update, async (req, res) => {
   return res.status(200).json("User Details updated successfully");
 })
-router.post("/:id", userController.createDetails, async (req, res) => {
+router.post("/details/:id", userController.createDetails, async (req, res) => {
   res.status(200).json("successfully created users details")
 });
 router.get("/details/:id", userController.getDetails, (req, res) => {
-  console.log(res.locals.data)
   res.status(200).json(res.locals.data);
 });
 router.put("/details/:id", userController.updateDetails, (req, res) => {
-  res.status(200).json()
+  res.status(200).json(res.locals.userDetails)
 });
 
 module.exports = router;

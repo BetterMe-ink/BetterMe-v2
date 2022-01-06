@@ -93,7 +93,7 @@ userController.createDetails = (req, res, next) => {
   const id = req.params.id;
   const {height, weight, age, favoriteFood, nonFavoriteFood, diet_type, allergies,} = req.body;
   const query =
-    "INSERT INTO userDetails (user_id, age, height, weight, diet_type, allergies,favoriteFood, nonFavoriteFood) VALUES(($1), ($2), ($3), ($4), ($5), ($6), ($7),($8))";
+    "INSERT INTO userDetails (user_id, age, height, weight, diet_type, allergies,favoriteFood, nonFavoriteFood) VALUES(($1), ($2), ($3), ($4), ($5), ($6), ($7),($8)) RETURNING *";
   db.query(
     query,
     [id, age, height, weight, diet_type, allergies, favoriteFood, nonFavoriteFood],
@@ -105,17 +105,17 @@ userController.createDetails = (req, res, next) => {
 }
 
 userController.getDetails = (req, res, next) => {
-  const {id} = req.params.id;
-  const q = "SELECT * FROM userDetails WHERE user_id=($1)";
+  const {id} = req.params
+  const q = `SELECT * FROM userdetails WHERE user_id=($1)`;
   db.query(q, [id], (err, result) => {
-    if (err) return next(error)
+    if (err) return next(err)
     res.locals.data = result.rows[0]
+    next()
   });
 }
 
 userController.updateDetails = (req, res, next) => {
   const {id} = req.params
-
   const {
     age,
     height,
@@ -126,28 +126,30 @@ userController.updateDetails = (req, res, next) => {
     nonFavoriteFood,
   } = req.body;
 
-  const lookup = "SELECT * FROM userDetails WHERE user_id=($1)";
-  db.query(lookup, [id], (err, entry) => {
+  const lookup = "SELECT * FROM userdetails WHERE user_id=($1)";
+  db.query(lookup, [id], (err, result) => {
     if (err) return next(err);
-    if (entry.rows[0]) {
+    if (result.rows.length > 0) {
       const query =
-        `UPDATE userDetails
+        `UPDATE userdetails
          SET age=($1), weight=($2), height=($3), diet_type=($4), allergies=($5), favoriteFood=($6), nonFavoriteFood=($7) 
-         WHERE user_id=($8);`
+         WHERE user_id=($8) RETURNING *;`
       db.query(
         query, [age, weight, height, diet_type, allergies, favoriteFood, nonFavoriteFood, id],
         (err, result) => {
           if (err) return next(err)
+          res.locals.userDetails = result
           next()
         })
     } else {
       const k =
-        `INSERT INTO userDetails (user_id, age, height, weight, diet_type, allergies, favoriteFood, nonFavoriteFood) 
-         VALUES(($1), ($2), ($3), ($4), ($5), ($6), ($7),($8));`
+        `INSERT INTO userdetails (user_id, age, height, weight, diet_type, allergies, favoriteFood, nonFavoriteFood) 
+         VALUES(($1), ($2), ($3), ($4), ($5), ($6), ($7),($8)) RETURNING *;`
       db.query(
         k, [id, age, height, weight, diet_type, allergies, favoriteFood, nonFavoriteFood],
         (err, result) => {
           if (err) return next(err)
+          res.locals.userDetails = result
           next()
         }
       );
