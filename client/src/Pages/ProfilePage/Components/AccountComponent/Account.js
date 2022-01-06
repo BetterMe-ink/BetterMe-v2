@@ -2,14 +2,14 @@ import { useRef, useState } from "react";
 import style from "./Account.module.scss";
 import { useSelector } from 'react-redux';
 import axios from "axios";
-
+import moment from "moment";
 
 
 function Account() {
   const [loading, setLoading] = useState(false);
   const user = useSelector(state => state.user.user);
 
-
+  const date = moment(user.date_joined);
 
   const FullName = useRef(null);
   const Email = useRef(null);
@@ -49,7 +49,7 @@ function Account() {
           <h1> Current Full name: { user.fullname }</h1>
           <h1> Current User name: { user.username }</h1>
           <h1> Current Email: {user.email}</h1>
-          <h1> Days Since Becoming Better: {user.date_joined}</h1>
+          <h1> Days Since Becoming Better: {date.fromNow()}</h1>
         </div>
 
         { loading ? 
