@@ -82,6 +82,7 @@
 }
 
 .SearchItemPage-summary {
+  text-decoration: none;
   @include v.theme() {
     color: v.theme-get('default-opposite');
   }
@@ -93,12 +94,12 @@
 
 .SearchItemPage-dish {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-evenly;
   margin-top: 40px;
 
   h4 {
-    font-weight: normal;
+    font-weight: 600;
     font-size: 1.5em;
     padding: 50px;
     border-radius: 10px;
@@ -118,20 +119,22 @@
 }
 
 .SearchItemPage-container {
-  padding: 60px;
+  padding: 30px 50px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   width: 80%;
   text-align: left;
   margin-bottom: 20px;
 
   div {
-    margin: 0 50px;
+    margin: 20px 10px;
   }
-
+  strong {
+    font-size: x-large;
+  }
   h1 {
     font-weight: normal;
     font-size: 1.25em;
@@ -139,15 +142,23 @@
 }
 
 .SearchItemPage-containerSection {
-  width: 80%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: auto;
+  @include v.theme() {
+    background-color: v.theme-get('primary1');
+    color: v.theme-get('default-opposite');
+  }
 }
 
 .SearchItemPage-ingredientsSection {
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 100%;
+  width: 45%;
   justify-content: space-between;
+  margin: 0px 5px;
   padding: 30px;
 
   li {
@@ -161,4 +172,40 @@
   @include v.theme() {
     border-bottom: 2px solid v.theme-get('default-color');
   }
+}
+.ingredientsSection:hover {
+  background-color: v.$pewter-blue;
+  cursor: pointer;
+}
+.ingredientList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.checkbox {
+  -webkit-appearance: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #fafafa;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),
+    inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
+  border: 2px solid #cacece;
+  padding: 7px;
+}
+.checkbox:checked {
+  color: v.$white;
+  background-color: #025c63;
+}
+.checkbox:checked:after {
+  position: absolute;
+  content: '\2714';
+  padding: 9px;
+
+  color: white;
+}
+
+a {
+  color: white;
 }

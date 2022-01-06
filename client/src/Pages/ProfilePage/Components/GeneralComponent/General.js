@@ -117,6 +117,9 @@ function General() {
             <br />
             <input ref={Favorite} type='text' placeholder='Enter your new Favorite Food...' />
 
+            <br />
+            <br />
+
             <label htmlFor=''>Hated Food</label>
             <br />
             <input ref={Hated} type='text' placeholder='Enter your new Hated Food...' />

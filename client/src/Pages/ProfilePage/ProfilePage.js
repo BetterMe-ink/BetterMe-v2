@@ -26,11 +26,11 @@ import { mdiFlowerTulip } from '@mdi/js';
 import { ThemeContext } from '../../Theme/ThemeContext';
 
 function ProfilePage() {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const user = useSelector((state) => state.user.user);
-
   const [active, setActive] = useState('General');
 
   const { theme, setTheme } = useContext(ThemeContext);

@@ -16,71 +16,69 @@ function SearchPage() {
 
   const [data, setData] = useState(biscuit || null);
 
-  useEffect(() => {
-    // effect
-    if (!localStorage.getItem('searchFetch')) {
-      axios
-        .get('https://api.spoonacular.com/recipes/complexSearch?apiKey=a55ef03413ed41f996c002316020cdde&number=50')
-        .then((res) => {
-          console.log(res.data);
-          localStorage.setItem('searchFetch', JSON.stringify(res.data));
-          setData(res.data.results);
-        })
-        .catch((err) => console.log(err));
-      return () => {
-        // cleanup
-      };
+    const [data, setData] = useState(biscuit || null);
+
+    useEffect(() => {
+        // effect
+        if (!localStorage.getItem('searchFetch')) {
+            axios.get('https://api.spoonacular.com/recipes/complexSearch?apiKey=a55ef03413ed41f996c002316020cdde&number=50')
+                .then(res => {
+                    console.log(res.data)
+                    localStorage.setItem('searchFetch', JSON.stringify(res.data));
+                    setData(res.data.results);
+                })
+                .catch(err => console.log(err))
+            return () => {
+                // cleanup
+            }
+        }
+    }, []);
+
+    // console.log(biscuit, data)
+
+    const Search = useRef(null);
+
+    const createSearch = async () => {
+        console.log('let get your data')
+        await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=a55ef03413ed41f996c002316020cdde&number=50&query=${Search.current.value}`)
+            .then((res) => {
+                localStorage.setItem('searchFetch', JSON.stringify(res.data));
+                setData(res.data.results)
+            })
+            .catch((err) => console.log(err));
     }
   }, []);
 
-  // console.log(biscuit, data)
-
-  const Search = useRef(null);
-
-  const createSearch = async () => {
-    console.log('let get your data');
-    await axios
-      .get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=a55ef03413ed41f996c002316020cdde&number=50&query=${Search.current.value}`)
-      .then((res) => {
-        console.log(res);
-        localStorage.setItem('searchFetch', JSON.stringify(res.data));
-        // console.log(res.data)
-        setData(res.data.results);
-      })
-      .catch((err) => console.log(err));
-
-    // return () => {
-
-    // }
-  };
-
-  console.log(data);
-  return (
-    <>
-      <Nav transition={true} />
-      <div>
-        <div className={'FoodPage-Hero'} style={{ backgroundImage: `url(${foodArr})` }}>
-          <h1>Find Your Next Meal</h1>
-          <div className={'FoodPage-Bar'}>
-            <input ref={Search} type='text' placeholder='Enter A Name And We Will help you to your next meal...' />
-            <Icon onClick={createSearch} className={'FoodPage-search'} path={mdiMagnify} size={1.5} />
-          </div>
-        </div>
-      </div>
-      <br />
-      <div className={'FoodPage-content'}>
-        <div className={'FoodPage-container'}>
-          {data &&
-            data.map((item, idx) => {
-              return <FoodItem key={item.id} id={item.id} name={item.title} image={item.image} />;
-            })}
-        </div>
-      </div>
-      <br />
-      <br />
-      <Footer />
-    </>
-  );
+    return (
+        <>
+            <Nav transition={true} />
+            <div>
+                <div className={'FoodPage-Hero'} style={{backgroundImage: `url(${foodArr})`}}>
+                    <h1>Find Your Next Meal</h1>
+                    <div className={'FoodPage-Bar'}>
+                        <input ref={Search} type="text" placeholder='Enter A Name And We Will help you to your next meal...' />
+                        <Icon
+                            onClick={createSearch}
+                            className={'FoodPage-search'}
+                            path={mdiMagnify}
+                            size={1.5}
+                        />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div className={'FoodPage-content'}>
+                <div className={'FoodPage-container'}>
+                    {data && data.map((item, idx) => {
+                        return <FoodItem key={item.id} id={item.id} name={item.title} image={item.image} />
+                    })}
+                </div>
+            </div>
+            <br />
+            <br />
+            <Footer />
+        </>
+    )
 }
 
 export default SearchPage;

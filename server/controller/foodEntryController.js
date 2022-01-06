@@ -10,7 +10,6 @@ foodEntryController.getEntry = (req, res, next) => {
         res.locals.entries = result.rows;
         next();
     })
-
 }
 
 foodEntryController.createEntry =(req, res, next) => {

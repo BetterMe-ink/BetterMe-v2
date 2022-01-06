@@ -2,10 +2,13 @@ import { useRef, useState } from 'react';
 import './Account.scss';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
+import moment from 'moment';
 
 function Account() {
   const [loading, setLoading] = useState(false);
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector(state => state.user.user);
+
+  const date = moment(user.date_joined);
 
   const FullName = useRef(null);
   const Email = useRef(null);
@@ -25,12 +28,12 @@ function Account() {
         },
         { withCredentials: true }
       )
-      .then((res) => {
+      .then(res => {
         setLoading(false);
         alert('Successfully updated!');
         window.location.reload();
       })
-      .catch((err) => {
+      .catch(err => {
         setLoading(false);
         alert('User Failed to update');
         console.log(err);
@@ -48,7 +51,7 @@ function Account() {
           <h1> Current Full name: {user.fullname}</h1>
           <h1> Current User name: {user.username}</h1>
           <h1> Current Email: {user.email}</h1>
-          <h1> Days Since Becoming Better: {user.date_joined}</h1>
+          <h1> Days Since Becoming Better: {date.fromNow()}</h1>
         </div>
 
         {loading ? (
@@ -57,27 +60,43 @@ function Account() {
           </div>
         ) : (
           <form className={'AccountComponent-content'}>
-            <label htmlFor=''>Full Name</label>
+            <label htmlFor="">Full Name</label>
             <br />
-            <input ref={FullName} type='text' placeholder='Enter your new Full Name' />
-            <br />
-            <br />
-
-            <label htmlFor=''>Username</label>
-            <br />
-            <input ref={Username} type='text' placeholder='Enter your new Username' />
+            <input
+              ref={FullName}
+              type="text"
+              placeholder="Enter your new Full Name"
+            />
             <br />
             <br />
 
-            <label htmlFor=''>Email</label>
+            <label htmlFor="">Username</label>
             <br />
-            <input ref={Email} type='text' placeholder='Enter your new Email...' />
+            <input
+              ref={Username}
+              type="text"
+              placeholder="Enter your new Username"
+            />
             <br />
             <br />
 
-            <label htmlFor=''>Password</label>
+            <label htmlFor="">Email</label>
             <br />
-            <input ref={Password} type='password' placeholder='Enter your new Password...' />
+            <input
+              ref={Email}
+              type="text"
+              placeholder="Enter your new Email..."
+            />
+            <br />
+            <br />
+
+            <label htmlFor="">Password</label>
+            <br />
+            <input
+              ref={Password}
+              type="password"
+              placeholder="Enter your new Password..."
+            />
 
             <br />
             <br />
