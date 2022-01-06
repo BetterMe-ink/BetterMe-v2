@@ -26,6 +26,6 @@ foodEntryController.createEntry =(req, res, next) => {
         res.locals.entry = result.rows[0];
         next();
     })
-}
+};
 
 module.exports = foodEntryController;
