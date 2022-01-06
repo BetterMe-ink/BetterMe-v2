@@ -3,14 +3,12 @@ import style from "./Account.module.scss";
 import { useSelector } from 'react-redux';
 import axios from "axios";
 
-
-
 function Account() {
+
   const [loading, setLoading] = useState(false);
+
   const user = useSelector(state => state.user.user);
-
-
-
+  
   const FullName = useRef(null);
   const Email = useRef(null);
   const Username = useRef(null);
@@ -18,14 +16,15 @@ function Account() {
 
   const submit = async () => {
     setLoading(true)
-    axios.put(`http://localhost:4000/users/${user.user_id}`, {
-      fullName: FullName.current.value || user.fullname,
-      email: Email.current.value || user.email,
-      username: Username.current.value || user.username,
-      password: Password.current.value || user.password,
+    axios.put(`http://localhost:4000/users/${user.user_id}/updateProfile`, {
+      fullName: FullName.current.value,
+      email: Email.current.value,
+      username: Username.current.value,
+      password: Password.current.value,
     }, { withCredentials: true })
     .then((res) => {
       setLoading(false);
+      console.log(res);
       alert('Successfully updated!');
       window.location.reload();
     })
@@ -49,7 +48,7 @@ function Account() {
           <h1> Current Full name: { user.fullname }</h1>
           <h1> Current User name: { user.username }</h1>
           <h1> Current Email: {user.email}</h1>
-          <h1> Days Since Becoming Better: {user.date_joined}</h1>
+          <h1> Current Password: {user.password.slice(0,4)}*****</h1>
         </div>
 
         { loading ? 
@@ -76,7 +75,7 @@ function Account() {
 
               <label htmlFor="">Password</label>
               <br />
-              <input ref={Password} type="password" placeholder="Enter your new Password..." />
+              <input ref={Password} type="text" placeholder="Enter your new Password..." />
 
               <br /><br /><br />
               <button onClick={submit}>Submit Changes</button>

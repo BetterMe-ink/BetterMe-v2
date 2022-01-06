@@ -20,13 +20,16 @@ function SignUpPage() {
 
     const submit = async () => {
         setLoading(true);
-        await axios.post('http://localhost:4000/users', {
+        await axios.post('http://localhost:4000/users/signup', {
                 fullName: FullName.current.value,
                 username: Username.current.value,
                 email: Email.current.value,
                 password: Password.current.value,
         }, { withCredentials: true })
             .then((res) => {
+                console.log(res);
+                // navigate('/userdetails');
+                // setLoading(false);
                 window.location.replace('/userdetails');
             })
             .catch((err) => {
@@ -55,13 +58,13 @@ function SignUpPage() {
 
                                 <label htmlFor="username">Username</label>
                                 <br />
-                                <input ref={Username} id='username' type="text" placeholder='Enter Your Username...' />
+                                <input ref={Username} id='username' type="text" placeholder='Enter Your Password...' />
 
                                 <br /><br />
 
                                 <label htmlFor="email">Email</label>
                                 <br />
-                                <input ref={Email} id='email' type="text" placeholder='Enter Your Email...' />
+                                <input ref={Email} id='email' type="text" placeholder='Enter Your Password...' />
 
                                 <br /><br /><br />
                                 
@@ -73,6 +76,7 @@ function SignUpPage() {
                                 <button type='button' onClick={(e) => {
                                     e.preventDefault();
                                     submit()
+                                    console.log('clicked')
                                 }} className={style.btn}>Submit</button>
                         </form>
                     </div>

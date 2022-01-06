@@ -10,7 +10,7 @@ $pewter-blue: #8baaadff;
 
 .sideBar {
     width: 30%;
-    height: 110vh;
+    height: 130vh;
     background-color: $cadet;
     display: flex;
     flex-direction: column;
@@ -47,7 +47,6 @@ $pewter-blue: #8baaadff;
 }
 
 .actions {
-    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -72,25 +71,4 @@ $pewter-blue: #8baaadff;
 
 .active {
     background-color: rgb(17, 17, 17, 0.5);
-}
-
-.logout {
-    position: absolute;
-    bottom: 30px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: row;
-    // align-items: center;
-    // width: 100%;
-    // height: 30px;
-    // height: 20px;
-
-    h1 {
-        // height: 10px;;
-        margin-top: 0;
-    }
-}
-
-.iconSvg {
-    color: white
 }
