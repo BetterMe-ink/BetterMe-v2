@@ -13,7 +13,6 @@ app.use(cookieParser());
 
 const usersRouter = require("./routes/users.js");
 const favoritesRouter = require("./routes/favorites.js");
-const preferencesRouter = require("./routes/preferences.js");
 const summaryRouter = require("./routes/summary.js");
 const foodEntryRouter = require('./routes/foodEntry.js')
 
