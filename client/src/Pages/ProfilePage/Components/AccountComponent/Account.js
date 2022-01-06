@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import style from './Account.module.scss';
+import './Account.scss';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
@@ -38,13 +38,13 @@ function Account() {
   };
 
   return (
-    <div className={style.main}>
+    <div className={'AccountComponent-main'}>
       <h1>Welcome to Account settings</h1>
       <br />
       <p>Change your account information</p>
 
-      <div className={style.container}>
-        <div className={style.account}>
+      <div className={'AccountComponent-container'}>
+        <div className={'AccountComponent-account'}>
           <h1> Current Full name: {user.fullname}</h1>
           <h1> Current User name: {user.username}</h1>
           <h1> Current Email: {user.email}</h1>
@@ -52,11 +52,11 @@ function Account() {
         </div>
 
         {loading ? (
-          <div className={style.loadingDiv}>
-            <div className={style.loader}></div>
+          <div className={'AccountComponent-loadingDiv'}>
+            <div className={'AccountComponent-loader'}></div>
           </div>
         ) : (
-          <form className={style.content}>
+          <form className={'AccountComponent-content'}>
             <label htmlFor=''>Full Name</label>
             <br />
             <input ref={FullName} type='text' placeholder='Enter your new Full Name' />
