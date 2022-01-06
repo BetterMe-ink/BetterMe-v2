@@ -17,7 +17,7 @@ $pewter-blue: #8baaadff;
 }
 
 .main {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,25 +35,19 @@ $pewter-blue: #8baaadff;
 }
 
 .col1 {
-    width: 30%;
+    width: 40%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     img {
-        width: 400px;
+        width: 600px;
     }
-}
-
-.col2 {
-    width: 50%;
-    padding: 50px;
-    margin-left: 100px;
-    margin-top: 140px;
-    color: white;
-
-    p {
-        font-size: 1.25em;
-    }
-
     button {
+        margin-bottom: -50px;
+        margin-top: 50px;
         width: 100%;
         padding: 20px;
         border: 3px solid $pewter-blue;
@@ -65,7 +59,7 @@ $pewter-blue: #8baaadff;
         cursor: pointer;
         transition: all 0.4s ease;
     }
-
+    
     button:hover {
         color: white;
         background-color: $pewter-blue;
@@ -74,6 +68,89 @@ $pewter-blue: #8baaadff;
     }
 }
 
+.col2 {
+    width: 70%;
+    padding: 20px;
+    margin-left: 100px;
+    margin-top: 140px;
+    color: white;
+
+    p {
+        font-size: 1.25em;
+    }
+
+}
+
+.summary {
+    color: white
+}
+
 .title {
     font-size: 2.5em;
+}
+
+.dish {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 40px;
+    
+    h4 {
+        font-weight: normal;
+        font-size: 1.5em;
+        padding: 50px;
+        border: 3px solid $cadet;
+        color: $cadet;
+        border-radius: 10px;
+    }
+
+    h4:hover {
+        background-color: $cadet;
+        color: white;
+        cursor: pointer;
+    }
+}
+
+.container {
+    padding: 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    text-align: left;
+    margin-bottom: 20px;
+    
+    div {
+        margin: 0 50px;
+    }
+    
+    h1 {
+        font-weight: normal;
+        font-size: 1.25em;
+    }
+}
+
+.containerSection {
+    width: 80%;
+}
+
+.ingredientsSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    padding: 30px;
+    border-bottom: 2px solid black;
+    
+    li {
+        text-align: left;
+    }
+
+    input {
+        margin-left: 20px;
+        cursor: pointer;
+    }
 }
