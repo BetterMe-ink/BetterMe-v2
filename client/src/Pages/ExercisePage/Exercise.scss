@@ -13,13 +13,14 @@
   align-items: center;
 
   h1 {
-    color: $white;
     margin-bottom: 20px;
+    @include v.theme() {
+      color: v.theme-get('default-opposite');
+    }
   }
 }
 
 .ExercisePage-Bar {
-  background-color: $white;
   padding: 10px 20px;
   border-radius: 20px;
   display: flex;
@@ -33,6 +34,10 @@
     height: 100%;
     border: none;
     padding: 0 10px;
+  }
+
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
   }
 }
 
