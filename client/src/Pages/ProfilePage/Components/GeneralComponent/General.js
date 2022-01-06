@@ -21,7 +21,7 @@ function General() {
       axios
         .get(`http://localhost:4000/users/details/${user.user_id}`)
         .then((res) => {
-            setUserDetails(res.data.data);
+            setUserDetails(res.data);
         })
         .catch((err) => console.log(err));
     }
