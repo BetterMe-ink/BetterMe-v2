@@ -1,7 +1,7 @@
-import axios from "axios";
-import { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
-import style from "./General.module.scss";
+import axios from 'axios';
+import { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import style from './General.module.scss';
 
 function General() {
   const user = useSelector((state) => state.user.user);
@@ -21,7 +21,7 @@ function General() {
       axios
         .get(`http://localhost:4000/users/details/${user.user_id}`)
         .then((res) => {
-            setUserDetails(res.data);
+          setUserDetails(res.data);
         })
         .catch((err) => console.log(err));
     }
@@ -45,12 +45,12 @@ function General() {
       )
       .then((res) => {
         setLoading(false);
-        alert("Successfully updated!");
+        alert('Successfully updated!');
         window.location.reload();
       })
       .catch((err) => {
         setLoading(false);
-        alert("User Failed to update");
+        alert('User Failed to update');
       });
   };
 
@@ -82,68 +82,44 @@ function General() {
           </div>
         ) : (
           <form className={style.content}>
-            <label htmlFor="">Age</label>
+            <label htmlFor=''>Age</label>
             <br />
-            <input ref={Age} type="text" placeholder="Enter your new Age..." />
-            <br />
-            <br />
-
-            <label htmlFor="">Height</label>
-            <br />
-            <input
-              ref={Height}
-              type="text"
-              placeholder="Enter your new Height..."
-            />
+            <input ref={Age} type='text' placeholder='Enter your new Age...' />
             <br />
             <br />
 
-            <label htmlFor="">Weight</label>
+            <label htmlFor=''>Height</label>
             <br />
-            <input
-              ref={Weight}
-              type="text"
-              placeholder="Enter your new Weight..."
-            />
+            <input ref={Height} type='text' placeholder='Enter your new Height...' />
             <br />
             <br />
 
-            <label htmlFor="">Diet</label>
+            <label htmlFor=''>Weight</label>
             <br />
-            <input
-              ref={Diet}
-              type="text"
-              placeholder="Enter your new Diet..."
-            />
+            <input ref={Weight} type='text' placeholder='Enter your new Weight...' />
+            <br />
+            <br />
+
+            <label htmlFor=''>Diet</label>
+            <br />
+            <input ref={Diet} type='text' placeholder='Enter your new Diet...' />
 
             <br />
             <br />
 
-            <label htmlFor="">Allergies</label>
+            <label htmlFor=''>Allergies</label>
             <br />
-            <input
-              ref={Allergies}
-              type="text"
-              placeholder="Enter your new Allergies..."
-            />
+            <input ref={Allergies} type='text' placeholder='Enter your new Allergies...' />
             <br />
             <br />
 
-            <label htmlFor="">Favorite Food</label>
+            <label htmlFor=''>Favorite Food</label>
             <br />
-            <input
-              ref={Favorite}
-              type="text"
-              placeholder="Enter your new Favorite Food..."
-            />
+            <input ref={Favorite} type='text' placeholder='Enter your new Favorite Food...' />
 
-            <label htmlFor="">Hated Food</label>
+            <label htmlFor=''>Hated Food</label>
             <br />
-            <input
-              ref={Hated}
-              type="text"
-              placeholder="Enter your new Hated Food..."
-            />
+            <input ref={Hated} type='text' placeholder='Enter your new Hated Food...' />
             <br />
             <br />
             <br />
