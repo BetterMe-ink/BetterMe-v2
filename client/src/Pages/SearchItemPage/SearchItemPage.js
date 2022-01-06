@@ -1,4 +1,4 @@
-import style from './SearchItemPage.module.scss';
+import './SearchItemPage.scss';
 import Nav from '../../Components/Navigation/Navigation';
 import Footer from '../../Components/Footer/Footer';
 
@@ -41,26 +41,26 @@ function SearchItemPage() {
   return (
     <>
       <Nav />
-      <div className={style.containerMain}>
-        <div className={style.main}>
-          <div className={style.SearchItemPage}>
-            <div className={style.col1}>
+      <div className={'SearchItemPage-containerMain'}>
+        <div className={'SearchItemPage-main'}>
+          <div className={'SearchItemPage-SearchItemPage'}>
+            <div className={'SearchItemPage-col1'}>
               <img src={item ? item.image : ''} alt={item ? item.name : ''} />
               {user ? <button onClick={addFav}>Add to your recipes List</button> : ''}
             </div>
 
-            <div className={style.col2}>
-              <h1 className={style.title}>{item ? item.title : ''}</h1>
+            <div className={'SearchItemPage-col2'}>
+              <h1 className={'SearchItemPage-title'}>{item ? item.title : ''}</h1>
               <br />
               <h1>* {item ? item.sourceName : ''}</h1>
               <br />
               <br />
-              <p className={style.summary}>{item && item ? parse(item.summary) : ''}</p>
+              <p className={'SearchItemPage-summary'}>{item && item ? parse(item.summary) : ''}</p>
               <br />
               <br />
             </div>
           </div>
-          <div className={style.container}>
+          <div className={'SearchItemPage-container'}>
             <div>
               <h1>Vegetarian: {item && item.vegetarian ? 'Yes' : 'No'}</h1>
               <br />
@@ -90,9 +90,9 @@ function SearchItemPage() {
             <br />
             <br />
           </div>
-          <div className={style.containerSection}>
+          <div className={'SearchItemPage-containerSection'}>
             <h1>Can Be Had for ?</h1>
-            <div className={style.dish}>
+            <div className={'SearchItemPage-dish'}>
               {item
                 ? item.dishTypes.map((val, idx) => {
                     return <h4 key={idx}>{val}</h4>;
@@ -105,11 +105,11 @@ function SearchItemPage() {
             <br />
 
             <h1>Ingredients</h1>
-            <div className={style.slideIngredients}>
+            <div className={'SearchItemPage-slideIngredients'}>
               {item
                 ? item.extendedIngredients.map((val, idx) => {
                     return (
-                      <div className={style.ingredientsSection} key={idx}>
+                      <div className={'SearchItemPage-ingredientsSection'} key={idx}>
                         <br />
                         <li>{val.original}</li>
                         <input type='radio' />
