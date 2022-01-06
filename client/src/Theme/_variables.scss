@@ -31,13 +31,12 @@ $themes: (
   dark: (
     'text-color': $white,
     'bg-color': #424242,
-    'test': $black,
-    'margin-top': 200px,
   ),
   light: (
     'text-color': $smoky-black,
     'bg-color': $baby-powder,
     'default-color': $black,
+    'default-opposite': $white,
     'defaultish-color': $blackish,
     'defaultish-opaque': $blackishOpaque,
     'default-light': $lightGray,

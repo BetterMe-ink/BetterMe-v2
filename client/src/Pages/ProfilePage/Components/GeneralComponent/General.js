@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
-import style from './General.module.scss';
+import './General.scss';
 
 function General() {
   const user = useSelector((state) => state.user.user);
@@ -55,14 +55,14 @@ function General() {
   };
 
   return (
-    <div className={style.main}>
+    <div className={'GeneralComponent-main'}>
       <h1>Welcome to Account settings</h1>
       <br />
       <p>Change your account information</p>
       <br />
-      <div className={style.container}>
+      <div className={'GeneralComponent-container'}>
         {userDetails ? (
-          <div className={style.account}>
+          <div className={'GeneralComponent-account'}>
             <h1> Current Age: {userDetails && userDetails.age}</h1>
             <h1> Current Height: {userDetails && userDetails.height}</h1>
             <h1> Current Weight: {userDetails && userDetails.weight}</h1>
@@ -72,16 +72,16 @@ function General() {
             <h1>Current Hated Food: {userDetails && userDetails.nonfavoritefood}</h1>
           </div>
         ) : (
-          <div className={style.account}>
+          <div className={'GeneralComponent-account'}>
             <h1>You have no user details as yet, why not create some!</h1>
           </div>
         )}
         {loading ? (
-          <div className={style.loadingDiv}>
-            <div className={style.loader}></div>
+          <div className={'GeneralComponent-loadingDiv'}>
+            <div className={'GeneralComponent-loader'}></div>
           </div>
         ) : (
-          <form className={style.content}>
+          <form className={'GeneralComponent-content'}>
             <label htmlFor=''>Age</label>
             <br />
             <input ref={Age} type='text' placeholder='Enter your new Age...' />
