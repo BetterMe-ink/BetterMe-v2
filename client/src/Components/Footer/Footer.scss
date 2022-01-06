@@ -1,30 +1,38 @@
 @use '../../Theme/variables' as v;
 
-.Footer {
-  background-color: v.$blackAndBlue;
+.Footer-Footer {
   height: 500px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   // align-items:
+  @include v.theme() {
+    background-color: v.theme-get('default-blueish');
+  }
 }
 
-.logo {
+.Footer-logo {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  color: v.$white;
   cursor: pointer;
-  height: 100% h2 {
+  height: 100%;
+
+  h2 {
     font-size: 1.4em;
     font-weight: bold;
-    color: v.$white;
     margin-left: 10px;
+    @include v.theme() {
+      color: v.theme-get('default-opposite');
+    }
+  }
+  @include v.theme() {
+    color: v.theme-get('default-opposite');
   }
 }
 
-.container {
+.Footer-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -33,15 +41,14 @@
   width: 60%;
 }
 
-.head {
+.Footer-head {
   font-weight: bold;
   font-size: 1.25em;
 }
 
-.col1,
-.col2,
-.link {
-  color: v.$white;
+.Footer-col1,
+.Footer-col2,
+.Footer-link {
   padding: 20px;
   text-decoration: none;
   display: flex;
@@ -50,12 +57,15 @@
   p {
     padding: 20px;
   }
+  @include v.theme() {
+    color: v.theme-get('default-opposite');
+  }
 }
 
-.col1 {
+.Footer-col1 {
   margin-right: 30px;
 }
 
-.col2 {
+.Footer-col2 {
   margin-top: 60px;
 }

@@ -1,6 +1,6 @@
 @use '../../Theme/variables' as v;
 
-.Navigation {
+.Navigation-Navigation {
   position: fixed;
   top: 0;
   display: flex;
@@ -14,164 +14,210 @@
   transition: all 0.6s ease-out;
 }
 
-.show {
-  box-shadow: 1px 0px 2px 0px v.$blackish;
-  background-color: v.$baby-powder;
+.Navigation-show {
   transition: all 0.6s ease-out;
+  @include v.theme() {
+    box-shadow: 1px 0px 2px 0px v.theme-get('defaultish-color');
+    background-color: v.theme-get('secondary1');
+  }
 }
 
-.logoTemp {
+.Navigation-logoTemp {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  color: v.$white;
   cursor: pointer;
 
   h2 {
     font-size: 1.4em;
     font-weight: bold;
-    color: v.$white;
     margin-left: 10px;
+    @include v.theme() {
+      color: v.theme-get('default-opposite');
+    }
+  }
+  @include v.theme() {
+    color: v.theme-get('default-opposite');
   }
 }
 
-.logo {
+.Navigation-logo {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  color: v.$pewter-blue;
   cursor: pointer;
 
   h2 {
     font-size: 1.4em;
     font-weight: bold;
-    color: v.$cadet;
     margin-left: 10px;
+    @include v.theme() {
+      color: v.theme-get('primary1');
+    }
+  }
+  @include v.theme() {
+    color: v.theme-get('secondary3');
   }
 }
 
-.svg {
+.Navigation-svg {
   cursor: pointer;
 }
 
-.links {
+.Navigation-links {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.linkTemp {
+.Navigation-linkTemp {
   padding: 10px;
   margin-right: 10px;
   text-decoration: none;
-  color: v.$white;
   font-weight: bold;
   font-size: 1.2em;
-  background-image: linear-gradient(90deg, v.$white, v.$celeste);
   background-size: 0 3px;
   background-repeat: no-repeat;
   background-position: 0 100%;
   transition: all 0.5s ease-out;
+  @include v.theme() {
+    color: v.theme-get('default-opposite');
+    background-image: linear-gradient(
+      90deg,
+      v.theme-get('default-opposite'),
+      v.theme-get('tertiary2')
+    );
+  }
 }
 
-.link {
+.Navigation-link {
   padding: 10px;
   margin-right: 10px;
   text-decoration: none;
-  color: v.$cadet;
   // font-weight: bold;
   font-size: 1.2em;
-  background-image: linear-gradient(90deg, v.$celeste, v.$cadet);
   background-size: 0 3px;
   background-repeat: no-repeat;
   background-position: 0 100%;
   transition: all 0.5s ease-out;
+  @include v.theme() {
+    color: v.theme-get('primary1');
+    background-image: linear-gradient(
+      90deg,
+      v.theme-get('tertiary2'),
+      v.theme-get('primary1')
+    );
+  }
 }
 
-.active {
+.Navigation-active {
   /* background-color: v.$cadet;
     font-weight: bold;
     color: v.$white */
-  background-image: linear-gradient(90deg, v.$celeste, v.$cadet);
   background-size: 100% 3px;
   background-repeat: no-repeat;
   background-position: 0 100%;
   transition: all 0.5s ease-out;
+  @include v.theme() {
+    background-image: linear-gradient(
+      90deg,
+      v.theme-get('tertiary2') v.theme-get('primary1')
+    );
+  }
 }
 
-.activeTemp {
+.Navigation-activeTemp {
   /* background-color: v.$cadet;
     font-weight: bold;
     color: v.$white */
-  background-image: linear-gradient(90deg, v.$white, v.$celeste);
   background-size: 100% 3px;
   background-repeat: no-repeat;
   background-position: 0 100%;
   transition: all 0.5s ease-out;
+  @include v.theme() {
+    background-image: linear-gradient(
+      90deg,
+      v.theme-get('default-opposite') v.theme-get('tertiary2')
+    );
+  }
 }
 
-.link:hover {
+.Navigation-link:hover {
   background-size: 100% 3px;
   transition: all 0.5s ease-out;
 }
 
-.linkTemp:hover {
+.Navigation-linkTemp:hover {
   background-size: 100% 3px;
   transition: all 0.5s ease-out;
 }
 
-.btnTemp {
+.Navigation-btnTemp {
   padding: 10px 20px;
-  border: 3px solid v.$white;
   border-radius: 20px;
   margin-right: 20px;
   text-decoration: none;
   font-weight: bold;
-  color: v.$white;
   transition: all 0.5s ease-out;
+  @include v.theme() {
+    border: 3px solid v.theme-get('default-opposite');
+    color: v.theme-get('default-opposite');
+  }
 }
 
-.btnTemp:hover {
+.Navigation-btnTemp:hover {
   background-color: v.$white;
   color: v.$cadet;
   font-weight: bold;
   transition: all 0.5s ease-out;
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
+    color: v.theme-get('primary1');
+  }
 }
 
-.btn {
+.Navigation-btn {
   padding: 10px 20px;
-  border: 3px solid v.$cadet;
   border-radius: 20px;
   margin-right: 20px;
   text-decoration: none;
-  color: v.$cadet;
   transition: all 0.5s ease-out;
+  @include v.theme() {
+    border: 3px solid v.theme-get('primary1');
+    color: v.theme-get('primary1');
+  }
 }
 
-.btn:hover {
-  background-color: v.$cadet;
-  color: v.$white;
+.Navigation-btn:hover {
   font-weight: bold;
   transition: all 0.5s ease-out;
+  @include v.theme() {
+    background-color: v.theme-get('primary1');
+    color: v.theme-get('default-opposite');
+  }
 }
 
-.btnFocusTemp {
-  background-color: v.$white;
-  color: v.$cadet;
+.Navigation-btnFocusTemp {
   font-weight: bold;
   transition: all 0.5s ease-out;
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
+    color: v.theme-get('primary1');
+  }
 }
 
-.btnFocus {
-  background-color: v.$cadet;
-  color: v.$white;
+.Navigation-btnFocus {
   font-weight: bold;
   transition: all 0.5s ease-out;
+  @include v.theme() {
+    background-color: v.theme-get('primary1');
+    color: v.theme-get('default-opposite');
+  }
 }
 
-.lstBtn {
+.Navigation-lstBtn {
   margin-right: 0;
 }

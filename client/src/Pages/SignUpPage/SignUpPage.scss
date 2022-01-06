@@ -1,26 +1,27 @@
 @use '../../Theme/variables' as v;
 
-.main {
+.SignUpPage-main {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  // background-color: v.$cadet;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: left top;
 }
 
-.container {
-  width: 50%;
+.SignUpPage-container {
+  width: 60%;
   height: auto;
-  background-color: v.$white;
+  @include v.theme() {
+    background-color: v.theme-get('default-color');
+  }
 }
 
-.content {
-  padding: 40px;
+.SignUpPage-content {
+  padding: 50px;
 
   h1 {
     font-size: 3.5em;
@@ -38,7 +39,9 @@
     margin-bottom: 10px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(17, 17, 17, 0.1);
+    @include v.theme() {
+      background-color: v.theme-get('default-light');
+    }
   }
 
   button {
@@ -46,27 +49,31 @@
     padding: 20px;
     border-radius: 5px;
     border: none;
-    background-color: v.$cadet;
-    color: v.$white;
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
+    @include v.theme() {
+      background-color: v.theme-get('primary1');
+      color: v.theme-get('default-color');
+    }
   }
 }
 
-.loader::before {
+.SignUpPage-loader::before {
   content: '';
   box-sizing: border-box;
   display: inline-block;
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  border: 12px solid v.$white;
   border-top-color: transparent;
   animation: spinner 0.7s linear infinite;
+  @include v.theme() {
+    border: 12px solid v.theme-get('default-color');
+  }
 }
 
-@keyframes spinner {
+@keyframes SignUpPage-spinner {
   to {
     transform: rotate(360deg);
   }

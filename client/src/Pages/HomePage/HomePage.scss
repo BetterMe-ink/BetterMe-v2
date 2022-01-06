@@ -1,6 +1,6 @@
 @use '../../Theme/variables' as v;
 
-.Hero {
+.HomePage-Hero {
   height: 800px;
   width: 100%;
   background-size: cover;
@@ -15,38 +15,42 @@
   align-items: left;
 }
 
-.titleBlock {
-  // background-color: v.$white;
+.HomePage-titleBlock {
   // filter: blur(10px);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(10px);
   width: 50%;
   padding: 40px;
-  color: v.$baby-powder;
+  @include v.theme() {
+    color: v.theme-get('secondary1');
+    // background-color: v.theme-get('default-opposite');
+  }
 }
 
-.title {
+.HomePage-title {
   font-size: 5em;
   font-weight: bolder;
 }
 
-.main {
+.HomePage-main {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 200px;
-  background-color: v.$baby-powder;
+  @include v.theme() {
+    color: v.theme-get('secondary1');
+  }
 }
 
-.container {
+.HomePage-container {
   width: 80%;
   display: flex;
   flex-direction: row;
 }
 
-.headTitle {
+.HomePage-headTitle {
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -54,7 +58,6 @@
   align-items: center;
   text-align: center;
   margin-right: 50px;
-  color: v.$cadet;
 
   button {
     width: 50%;
@@ -62,30 +65,39 @@
     border-radius: 15px;
     margin-top: 40px;
     border: none;
-    border: 3px solid v.$green-sheen;
     background-color: transparent;
     font-size: 1.125em;
     font-weight: bold;
-    color: v.$green-sheen;
     cursor: pointer;
     transition: all 0.4s ease-in-out;
+    @include v.theme() {
+      border: 3px solid v.theme-get('tertiary1');
+      color: v.theme-get('tertiary1');
+    }
   }
 
   button:hover {
     transform: translateY(-5px);
-    color: v.$baby-powder;
-    background-color: v.$green-sheen;
     transition: all 0.4s ease-in-out;
+    @include v.theme() {
+      color: v.theme-get('secondary1');
+      background-color: v.theme-get('tertiary1');
+    }
+  }
+  @include v.theme() {
+    color: v.theme-get('primary1');
   }
 }
 
-.headBlur {
+.HomePage-headBlur {
   width: 80%;
   font-size: 0.8em;
-  color: v.$cadet;
+  @include v.theme() {
+    color: v.theme-get('primary1');
+  }
 }
 
-.bottomHero {
+.HomePage-bottomHero {
   width: 100%;
   height: 350px;
   background-size: cover;
@@ -93,9 +105,8 @@
   margin-top: 150px;
 }
 
-.imageContainer {
+.HomePage-imageContainer {
   width: 100%;
-  background-color: rgb(100, 182, 172, 0.3);
   margin-top: 200px;
   height: 600px;
   position: relative;
@@ -104,9 +115,12 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 500px;
+  @include v.theme() {
+    background-color: v.theme-get('image-container');
+  }
 }
 
-.imageContent {
+.HomePage-imageContent {
   position: absolute;
   bottom: -250px;
   height: 400px;
@@ -115,12 +129,14 @@
   width: 800px;
 }
 
-.imageInfo {
+.HomePage-imageInfo {
   margin-top: -110px;
   text-align: center;
   h3 {
     padding: 10px;
-    color: rgb(93, 115, 126, 0.8);
+    @include v.theme() {
+      background-color: v.theme-get('image-info-text');
+    }
   }
   p {
     padding: 10px;
@@ -131,7 +147,9 @@
   h2 {
     padding: 10px;
     font-size: 1em;
-    color: rgb(93, 115, 126, 0.8);
+    @include v.theme() {
+      background-color: v.theme-get('image-info-text');
+    }
   }
 
   button {
@@ -140,40 +158,44 @@
     border: none;
     border-radius: 15px;
     background-color: transparent;
-    border: 3px solid v.$cadet;
     cursor: pointer;
     font-size: 1.125em;
     font-weight: bold;
-    color: v.$cadet;
     transition: all 0.4s ease-in-out;
+    @include v.theme() {
+      border: 3px solid v.theme-get('primary1');
+      color: v.theme-get('primary1');
+    }
   }
 
   button:hover {
     transform: translateY(-5px);
-    color: v.$white;
-    background-color: v.$cadet;
     transition: all 0.4s ease-in-out;
+    @include v.theme() {
+      color: v.theme-get('default-opposite');
+      background-color: v.theme-get('primary1');
+    }
   }
 }
 
-.pitch {
+.HomePage-pitch {
   width: 100%;
 }
 
-.pitchContent {
+.HomePage-pitchContent {
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100%;
 }
 
-.pitchImg {
+.HomePage-pitchImg {
   height: 600px;
   width: 30%;
   background-size: cover;
 }
 
-.pitch1 {
+.HomePage-pitch1 {
   padding: 20px;
   width: 60%;
 
@@ -186,7 +208,7 @@
   }
 }
 
-.infoDiv {
+.HomePage-infoDiv {
   margin-top: 200px;
   display: flex;
   flex-direction: column;
@@ -194,9 +216,11 @@
   width: 90%;
 
   h1 {
-    color: rgb(93, 115, 126, 0.6);
     font-size: 1.5em;
     margin-bottom: 10px;
+    @include v.theme() {
+      color: v.theme-get('image-info-text');
+    }
   }
 
   p {
@@ -206,14 +230,14 @@
   }
 }
 
-.infoContent {
+.HomePage-infoContent {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
 }
 
-.teamContainer {
+.HomePage-teamContainer {
   margin-top: 200px;
   display: flex;
   flex-direction: column;
@@ -227,25 +251,27 @@
 
   p {
     font-size: 1.25em;
-    color: v.$cadet;
     margin-bottom: 10px;
+    @include v.theme() {
+      color: v.theme-get('primary1');
+    }
   }
 }
 
-.team {
+.HomePage-team {
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100%;
 }
 
-.teamCol1 {
+.HomePage-teamCol1 {
   // margin-right: 50px;
   text-align: right;
   margin-left: -120px;
   margin-right: 40px;
 }
 
-.teamCol2 {
+.HomePage-teamCol2 {
   // margin-left: 50px
 }
