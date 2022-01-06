@@ -1,0 +1,56 @@
+@use '../../Theme/variables' as v;
+
+.FoodItem-main {
+  width: 300px;
+  height: 350px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 20px;
+  justify-content: center;
+
+  h1 {
+    font-size: 1em;
+    text-align: center;
+    padding: 20px 10px;
+    @include v.theme() {
+      color: v.theme-get('primary1');
+    }
+  }
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
+    box-shadow: 2px 2px 7px 0px v.theme-get('defaultish-opaque');
+  }
+}
+
+.FoodItem-img {
+  width: 95%;
+  cursor: pointer;
+}
+
+.FoodItem-btn {
+  padding: 10px 30px;
+  border-radius: 10px;
+  border: none;
+  background-color: transparent;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.6s ease;
+  @include v.theme() {
+    border: 3px solid v.theme-get('primary1');
+    color: v.theme-get('primary1');
+  }
+}
+
+.FoodItem-btn:hover {
+  transition: all 0.6s ease;
+  @include v.theme() {
+    color: v.theme-get('default-opposite');
+    background-color: v.theme-get('primary1');
+  }
+}

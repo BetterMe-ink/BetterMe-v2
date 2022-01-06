@@ -1,0 +1,74 @@
+@use '../../../../Theme/variables' as v;
+
+.GeneralComponent-main {
+  p {
+    font-size: 1.25em;
+    @include v.theme() {
+      color: v.theme-get('primary1');
+    }
+  }
+}
+
+.GeneralComponent-container {
+  width: 100%;
+  height: auto;
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
+  }
+}
+
+.GeneralComponent-content {
+  padding: 50px;
+
+  h1 {
+    font-size: 3.5em;
+  }
+
+  label {
+    font-weight: bold;
+    font-size: 1.4em;
+  }
+
+  input {
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    @include v.theme() {
+      background-color: v.theme-get('default-light');
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    @include v.theme() {
+      background-color: v.theme-get('primary1');
+      color: v.theme-get('default-opposite');
+    }
+  }
+}
+
+.GeneralComponent-account {
+  font-size: 0.7rem;
+  padding: 10px 50px;
+  margin-top: 20px;
+  padding-bottom: 30px;
+
+  h1 {
+    padding: 5px 0;
+    font-weight: normal;
+  }
+
+  @include v.theme() {
+    color: v.theme-get('secondary3');
+    border-bottom: 3px solid v.theme-get('default-color');
+  }
+}

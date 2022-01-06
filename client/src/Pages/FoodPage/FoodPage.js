@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import foodArr from '../../images/foodAsort.jpg';
 import axios from 'axios';
 
-import style from './FoodPage.module.scss';
+import './FoodPage.scss';
 import Nav from '../../Components/Navigation/Navigation';
 import Footer from '../../Components/Footer/Footer';
 import FoodItem from '../../Components/FoodItem/FoodItem';
@@ -11,9 +11,10 @@ import { mdiMagnify } from '@mdi/js';
 import Icon from '@mdi/react';
 
 function SearchPage() {
+  let biscuit;
+  if (localStorage.getItem('searchFetch')) biscuit = JSON.parse(localStorage.getItem('searchFetch')).results;
 
-    let biscuit; 
-    if (localStorage.getItem('searchFetch')) biscuit = JSON.parse(localStorage.getItem('searchFetch')).results
+  const [data, setData] = useState(biscuit || null);
 
     const [data, setData] = useState(biscuit || null);
 
@@ -36,35 +37,29 @@ function SearchPage() {
     // console.log(biscuit, data)
 
     const Search = useRef(null);
-    
+
     const createSearch = async () => {
         console.log('let get your data')
         await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=a55ef03413ed41f996c002316020cdde&number=50&query=${Search.current.value}`)
             .then((res) => {
-                console.log(res)
                 localStorage.setItem('searchFetch', JSON.stringify(res.data));
-                // console.log(res.data)
                 setData(res.data.results)
             })
             .catch((err) => console.log(err));
-
-        // return () => {
-
-        // }
     }
+  }, []);
 
-    console.log(data);
     return (
         <>
             <Nav transition={true} />
             <div>
-                <div className={style.Hero} style={{backgroundImage: `url(${foodArr})`}}>
+                <div className={'FoodPage-Hero'} style={{backgroundImage: `url(${foodArr})`}}>
                     <h1>Find Your Next Meal</h1>
-                    <div className={style.Bar}>
+                    <div className={'FoodPage-Bar'}>
                         <input ref={Search} type="text" placeholder='Enter A Name And We Will help you to your next meal...' />
-                        <Icon 
+                        <Icon
                             onClick={createSearch}
-                            className={style.search}
+                            className={'FoodPage-search'}
                             path={mdiMagnify}
                             size={1.5}
                         />
@@ -72,8 +67,8 @@ function SearchPage() {
                 </div>
             </div>
             <br />
-            <div className={style.content}>
-                <div className={style.container}>
+            <div className={'FoodPage-content'}>
+                <div className={'FoodPage-container'}>
                     {data && data.map((item, idx) => {
                         return <FoodItem key={item.id} id={item.id} name={item.title} image={item.image} />
                     })}
@@ -86,4 +81,4 @@ function SearchPage() {
     )
 }
 
-export default SearchPage
+export default SearchPage;

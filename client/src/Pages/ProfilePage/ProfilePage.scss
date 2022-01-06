@@ -1,0 +1,193 @@
+@use '../../Theme/variables' as v;
+
+.ProfilePage-sideBar {
+  width: 30%;
+  height: 130vh;
+  // background-color: v.$cadet;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+
+  h1 {
+    margin-top: 130px;
+    // color: v.$baby-powder;
+    @include v.theme() {
+      color: v.theme-get('secondary1');
+    }
+  }
+
+  h2 {
+    margin-bottom: 30px;
+    @include v.theme() {
+      color: v.theme-get('secondary1');
+    }
+  }
+  @include v.theme() {
+    background-color: v.theme-get('primary1');
+  }
+}
+
+.ProfilePage-main {
+  display: flex;
+  flex-direction: row;
+}
+
+.ProfilePage-container {
+  margin-top: 100px;
+  width: 70%;
+  padding: 30px;
+
+  div {
+    p {
+      font-size: 1.3em;
+      line-height: 1.5em;
+    }
+  }
+
+  @include v.theme() {
+    background-color: v.theme-get('secondary1');
+  }
+}
+
+.ProfilePage-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.ProfilePage-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.ProfilePage-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  @include v.theme() {
+    background-color: v.theme-get('primary1');
+  }
+}
+
+.ProfilePage-slider:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
+  }
+}
+
+input:checked + .ProfilePage-slider {
+  background-color: #2196f3;
+}
+
+input:focus + .ProfilePage-slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.ProfilePage-slider.ProfilePage-round {
+  border-radius: 34px;
+}
+
+.ProfilePage-slider.ProfilePage-round:before {
+  border-radius: 50%;
+}
+
+.ProfilePage-settingsSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: v.$cadet;
+
+  label {
+    margin-left: 30px;
+  }
+}
+
+.ProfilePage-image {
+  margin-top: 50px;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 50px;
+}
+
+.ProfilePage-actions {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+
+  p {
+    font-size: 1.35rem;
+    @include v.theme() {
+      color: v.theme-get('secondary1');
+    }
+  }
+
+  div {
+      width: 100%;
+      padding: 20px;
+      padding-bottom: 40px;
+      padding-top: 40px;
+      cursor: pointer;
+  }
+
+  div:hover {
+    @include v.theme() {
+      background-color: v.theme-get('defaultish-opaque');
+    }
+  }
+}
+
+.ProfilePage-active {
+  @include v.theme() {
+    background-color: v.theme-get('defaultish-opaque');
+  }
+}
+
+.ProfilePage-logout {
+  position: absolute;
+  bottom: 30px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  // align-items: center;
+  // width: 100%;
+  // height: 30px;
+  // height: 20px;
+
+  h1 {
+    // height: 10px;;
+    margin-top: 0;
+  }
+}
+
+.ProfilePage-iconSvg {
+  @include v.theme() {
+    color: v.theme-get('default-opposite');
+  }
+}

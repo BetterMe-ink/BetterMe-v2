@@ -1,0 +1,71 @@
+@use '../../Theme/variables' as v;
+
+.Footer-Footer {
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  // align-items:
+  @include v.theme() {
+    background-color: v.theme-get('default-blueish');
+  }
+}
+
+.Footer-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 100%;
+
+  h2 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-left: 10px;
+    @include v.theme() {
+      color: v.theme-get('default-opposite');
+    }
+  }
+  @include v.theme() {
+    color: v.theme-get('default-opposite');
+  }
+}
+
+.Footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
+  width: 60%;
+}
+
+.Footer-head {
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+.Footer-col1,
+.Footer-col2,
+.Footer-link {
+  padding: 20px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+
+  p {
+    padding: 20px;
+  }
+  @include v.theme() {
+    color: v.theme-get('default-opposite');
+  }
+}
+
+.Footer-col1 {
+  margin-right: 30px;
+}
+
+.Footer-col2 {
+  margin-top: 60px;
+}

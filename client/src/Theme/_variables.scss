@@ -1,0 +1,86 @@
+$black: #000000; // black
+$white: #ffffff; // white
+// Light
+$blackish: #111;
+$blackishOpaque: #11111180;
+$blackAndBlue: #001011; // blackish
+$light-gray: rgb(17, 17, 17, 0.1);
+$medium-gray: rgb(17, 17, 17, 0.3);
+
+$cadet: #5d737eff; // primary1
+
+$baby-powder: #fcfffdff; // secondary1
+$mint-cream: #f4fff8ff; // secondary2
+$pewter-blue: #8baaadff; // secondary3
+
+$green-sheen: #64b6acff; // tertiary1
+$celeste: #c0fdfbff; // tertiary2
+$aero-blue: #daffefff; // tertiary3
+
+$image-container: rgb(100, 182, 172, 0.3);
+$image-info-text: rgb(93, 115, 126, 0.8);
+
+// dark
+$smokey-black: #0f0a0a; // primary
+
+$rich-black-fogra-39: #040303ff;
+$smoky-black: #0f0a0aff;
+$wintergreen-dream: #4f8b84ff;
+$green-sheen: #64b6acff;
+$celeste: #c0fdfbff;
+$light-cyan: #d0fdfbff;
+$light-cyan-2: #dcfdfbff;
+
+$themes: (
+  dark: (
+    'text-color': $white,
+    'bg-color': #424242,
+    'default-color': $white,
+    'default-opposite': $black,
+  ),
+  light: (
+    'text-color': $smoky-black,
+    'bg-color': $baby-powder,
+    'default-color': $black,
+    'default-opposite': $white,
+    'defaultish-color': $blackish,
+    'defaultish-opaque': $blackishOpaque,
+    'default-blueish': $blackAndBlue,
+    'default-light': $light-gray,
+    'default-medium': $medium-gray,
+    'primary1': $cadet,
+    'secondary1': $baby-powder,
+    'secondary2': $mint-cream,
+    'secondary3': $pewter-blue,
+    'tertiary1': $green-sheen,
+    'tertiary2': $celeste,
+    'tertiary3': $aero-blue,
+    'image-container': $image-container,
+    'image-info-text': $image-info-text,
+  ),
+);
+
+$theme-map: null;
+
+@mixin theme() {
+  @each $theme, $map in $themes {
+    // $theme: darkTheme, lightTheme
+    // $map: ('text-color': ..., 'bg-color': ...)
+
+    // make the $map globally accessible, so that theme-get() can access it
+    $theme-map: $map !global;
+
+    // make a class for each theme using interpolation -> #{}
+    // use & for making the theme class ancestor of the class
+    // from which you use @include theme() {...}
+    .#{$theme} & {
+      @content; // the content inside @include theme() {...}
+    }
+  }
+  // no use of the variable $theme-map now
+  $theme-map: null !global;
+}
+
+@function theme-get($key) {
+  @return map-get($theme-map, $key);
+}

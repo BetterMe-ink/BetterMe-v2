@@ -1,0 +1,223 @@
+@use '../../Theme/variables' as v;
+
+.Navigation-Navigation {
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background-color: transparent;
+  z-index: 3;
+  transition: all 0.6s ease-out;
+}
+
+.Navigation-show {
+  transition: all 0.6s ease-out;
+  @include v.theme() {
+    box-shadow: 1px 0px 2px 0px v.theme-get('defaultish-color');
+    background-color: v.theme-get('secondary1');
+  }
+}
+
+.Navigation-logoTemp {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  h2 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-left: 10px;
+    @include v.theme() {
+      color: v.theme-get('default-opposite');
+    }
+  }
+  @include v.theme() {
+    color: v.theme-get('default-opposite');
+  }
+}
+
+.Navigation-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  h2 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-left: 10px;
+    @include v.theme() {
+      color: v.theme-get('primary1');
+    }
+  }
+  @include v.theme() {
+    color: v.theme-get('secondary3');
+  }
+}
+
+.Navigation-svg {
+  cursor: pointer;
+}
+
+.Navigation-links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.Navigation-linkTemp {
+  padding: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2em;
+  background-size: 0 3px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: all 0.5s ease-out;
+  @include v.theme() {
+    color: v.theme-get('default-opposite');
+    background-image: linear-gradient(
+      90deg,
+      v.theme-get('default-opposite'),
+      v.theme-get('tertiary2')
+    );
+  }
+}
+
+.Navigation-link {
+  padding: 10px;
+  margin-right: 10px;
+  text-decoration: none;
+  // font-weight: bold;
+  font-size: 1.2em;
+  background-size: 0 3px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: all 0.5s ease-out;
+  @include v.theme() {
+    color: v.theme-get('primary1');
+    background-image: linear-gradient(
+      90deg,
+      v.theme-get('tertiary2'),
+      v.theme-get('primary1')
+    );
+  }
+}
+
+.Navigation-active {
+  /* background-color: v.$cadet;
+    font-weight: bold;
+    color: v.$white */
+  background-size: 100% 3px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: all 0.5s ease-out;
+  @include v.theme() {
+    background-image: linear-gradient(
+      90deg,
+      v.theme-get('tertiary2') v.theme-get('primary1')
+    );
+  }
+}
+
+.Navigation-activeTemp {
+  /* background-color: v.$cadet;
+    font-weight: bold;
+    color: v.$white */
+  background-size: 100% 3px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: all 0.5s ease-out;
+  @include v.theme() {
+    background-image: linear-gradient(
+      90deg,
+      v.theme-get('default-opposite') v.theme-get('tertiary2')
+    );
+  }
+}
+
+.Navigation-link:hover {
+  background-size: 100% 3px;
+  transition: all 0.5s ease-out;
+}
+
+.Navigation-linkTemp:hover {
+  background-size: 100% 3px;
+  transition: all 0.5s ease-out;
+}
+
+.Navigation-btnTemp {
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-right: 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.5s ease-out;
+  @include v.theme() {
+    border: 3px solid v.theme-get('default-opposite');
+    color: v.theme-get('default-opposite');
+  }
+}
+
+.Navigation-btnTemp:hover {
+  background-color: v.$white;
+  color: v.$cadet;
+  font-weight: bold;
+  transition: all 0.5s ease-out;
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
+    color: v.theme-get('primary1');
+  }
+}
+
+.Navigation-btn {
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-right: 20px;
+  text-decoration: none;
+  transition: all 0.5s ease-out;
+  @include v.theme() {
+    border: 3px solid v.theme-get('primary1');
+    color: v.theme-get('primary1');
+  }
+}
+
+.Navigation-btn:hover {
+  font-weight: bold;
+  transition: all 0.5s ease-out;
+  @include v.theme() {
+    background-color: v.theme-get('primary1');
+    color: v.theme-get('default-opposite');
+  }
+}
+
+.Navigation-btnFocusTemp {
+  font-weight: bold;
+  transition: all 0.5s ease-out;
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
+    color: v.theme-get('primary1');
+  }
+}
+
+.Navigation-btnFocus {
+  font-weight: bold;
+  transition: all 0.5s ease-out;
+  @include v.theme() {
+    background-color: v.theme-get('primary1');
+    color: v.theme-get('default-opposite');
+  }
+}
+
+.Navigation-lstBtn {
+  margin-right: 0;
+}

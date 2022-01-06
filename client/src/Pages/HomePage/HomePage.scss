@@ -1,0 +1,277 @@
+@use '../../Theme/variables' as v;
+
+.HomePage-Hero {
+  height: 800px;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: rotate(90deg);
+  // object-fit: contain;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+}
+
+.HomePage-titleBlock {
+  // filter: blur(10px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(10px);
+  width: 50%;
+  padding: 40px;
+  @include v.theme() {
+    color: v.theme-get('secondary1');
+    // background-color: v.theme-get('default-opposite');
+  }
+}
+
+.HomePage-title {
+  font-size: 5em;
+  font-weight: bolder;
+}
+
+.HomePage-main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+  @include v.theme() {
+    color: v.theme-get('secondary1');
+  }
+}
+
+.HomePage-container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+}
+
+.HomePage-headTitle {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-right: 50px;
+
+  button {
+    width: 50%;
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin-top: 40px;
+    border: none;
+    background-color: transparent;
+    font-size: 1.125em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+    @include v.theme() {
+      border: 3px solid v.theme-get('tertiary1');
+      color: v.theme-get('tertiary1');
+    }
+  }
+
+  button:hover {
+    transform: translateY(-5px);
+    transition: all 0.4s ease-in-out;
+    @include v.theme() {
+      color: v.theme-get('secondary1');
+      background-color: v.theme-get('tertiary1');
+    }
+  }
+  @include v.theme() {
+    color: v.theme-get('primary1');
+  }
+}
+
+.HomePage-headBlur {
+  width: 80%;
+  font-size: 0.8em;
+  @include v.theme() {
+    color: v.theme-get('primary1');
+  }
+}
+
+.HomePage-bottomHero {
+  width: 100%;
+  height: 350px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 150px;
+}
+
+.HomePage-imageContainer {
+  width: 100%;
+  margin-top: 200px;
+  height: 600px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 500px;
+  @include v.theme() {
+    background-color: v.theme-get('image-container');
+  }
+}
+
+.HomePage-imageContent {
+  position: absolute;
+  bottom: -250px;
+  height: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 800px;
+}
+
+.HomePage-imageInfo {
+  margin-top: -110px;
+  text-align: center;
+  h3 {
+    padding: 10px;
+    @include v.theme() {
+      background-color: v.theme-get('image-info-text');
+    }
+  }
+  p {
+    padding: 10px;
+    font-size: 2em;
+    font-weight: bold;
+  }
+
+  h2 {
+    padding: 10px;
+    font-size: 1em;
+    @include v.theme() {
+      background-color: v.theme-get('image-info-text');
+    }
+  }
+
+  button {
+    padding: 15px 50px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 15px;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 1.125em;
+    font-weight: bold;
+    transition: all 0.4s ease-in-out;
+    @include v.theme() {
+      border: 3px solid v.theme-get('primary1');
+      color: v.theme-get('primary1');
+    }
+  }
+
+  button:hover {
+    transform: translateY(-5px);
+    transition: all 0.4s ease-in-out;
+    @include v.theme() {
+      color: v.theme-get('default-opposite');
+      background-color: v.theme-get('primary1');
+    }
+  }
+}
+
+.HomePage-pitch {
+  width: 100%;
+}
+
+.HomePage-pitchContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.HomePage-pitchImg {
+  height: 600px;
+  width: 30%;
+  background-size: cover;
+}
+
+.HomePage-pitch1 {
+  padding: 20px;
+  width: 60%;
+
+  h1 {
+    font-size: 2.5em;
+  }
+
+  p {
+    font-size: 1.4em;
+  }
+}
+
+.HomePage-infoDiv {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 90%;
+
+  h1 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    @include v.theme() {
+      color: v.theme-get('image-info-text');
+    }
+  }
+
+  p {
+    font-size: 2.5em;
+    font-weight: bold;
+    padding: 5px;
+  }
+}
+
+.HomePage-infoContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.HomePage-teamContainer {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 1.25em;
+    margin-bottom: 10px;
+    @include v.theme() {
+      color: v.theme-get('primary1');
+    }
+  }
+}
+
+.HomePage-team {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.HomePage-teamCol1 {
+  // margin-right: 50px;
+  text-align: right;
+  margin-left: -120px;
+  margin-right: 40px;
+}
+
+.HomePage-teamCol2 {
+  // margin-left: 50px
+}

@@ -1,0 +1,104 @@
+@use '../../../../Theme/variables' as v;
+
+.AccountComponent-main {
+  p {
+    font-size: 1.25em;
+    @include v.theme() {
+      color: v.theme-get('secondary3');
+    }
+  }
+}
+
+.AccountComponent-container {
+  width: 100%;
+  height: auto;
+  @include v.theme() {
+    color: v.theme-get('default-color');
+  }
+}
+
+.AccountComponent-content {
+  padding: 50px;
+
+  h1 {
+    font-size: 3.5em;
+  }
+
+  label {
+    font-weight: bold;
+    font-size: 1.4em;
+  }
+
+  input {
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    // background-color: rgb(17, 17, 17, 0.1);
+    @include v.theme() {
+      background-color: v.theme-get('default-light');
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    @include v.theme() {
+      background-color: v.theme-get('primary1');
+      color: v.theme-get('default-color');
+    }
+  }
+}
+
+.AccountComponent-account {
+  font-size: 0.7rem;
+  color: v.$pewter-blue;
+  padding: 10px 50px;
+  margin-top: 20px;
+  padding-bottom: 30px;
+  @include v.theme() {
+    border-bottom: 3px solid v.theme-get('default-color');
+  }
+
+  h1 {
+    padding: 5px 0;
+    font-weight: normal;
+  }
+}
+
+.AccountComponent-loadingDiv {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.AccountComponent-loader::before {
+  content: '';
+  box-sizing: border-box;
+  display: inline-block;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 12px solid v.$cadet;
+  border-top-color: transparent;
+  animation: spinner 0.7s linear infinite;
+  @include v.theme() {
+    border: 12px solid v.theme-get('primary1');
+  }
+}
+
+@keyframes AccountComponent-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}

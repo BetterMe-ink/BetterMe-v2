@@ -1,0 +1,81 @@
+@use '../../Theme/variables' as v;
+
+.LoginPage-main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // background-color: v.$cadet;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.LoginPage-container {
+  width: 50%;
+  height: auto;
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
+  }
+}
+
+.LoginPage-content {
+  padding: 40px;
+
+  h1 {
+    font-size: 3.5em;
+  }
+
+  label {
+    font-weight: bold;
+    font-size: 1.4em;
+  }
+
+  input {
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    @include v.theme() {
+      background-color: v.theme-get('default-light');
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    @include v.theme() {
+      background-color: v.theme-get('primary1');
+      color: v.theme-get('default-opposite');
+    }
+  }
+}
+
+.LoginPage-loader::before {
+  content: '';
+  box-sizing: border-box;
+  display: inline-block;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spinner 0.7s linear infinite;
+  @include v.theme() {
+    border: 12px solid v.theme-get('default-opposite');
+  }
+}
+
+@keyframes LoginPage-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}

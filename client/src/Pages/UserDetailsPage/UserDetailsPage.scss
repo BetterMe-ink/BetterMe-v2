@@ -1,0 +1,106 @@
+@use '../../Theme/variables' as v;
+
+.UserDetailsPage-main {
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  object-fit: contain;
+}
+
+.UserDetailsPage-overlay {
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  object-fit: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include v.theme() {
+    background-color: v.theme-get('default-medium');
+  }
+}
+
+.UserDetailsPage-container {
+  width: 60%;
+  height: auto;
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
+  }
+}
+
+.UserDetailsPage-content {
+  padding: 50px;
+
+  h1 {
+    font-size: 3.5em;
+  }
+
+  label {
+    font-weight: bold;
+    font-size: 1.4em;
+  }
+
+  input {
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    @include v.theme() {
+      background-color: v.theme-get('default-light');
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 20px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+  }
+}
+
+.UserDetailsPage-btnDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.UserDetailsPage-btnSkip {
+  margin-right: 10px;
+  @include v.theme() {
+    background-color: v.theme-get('tertiary2');
+    color: v.theme-get('default-color');
+  }
+}
+
+.UserDetailsPage-btn {
+  margin-left: 10px;
+  @include v.theme() {
+    background-color: v.theme-get('primary1');
+    color: v.theme-get('default-opposite');
+  }
+}
+
+.UserDetailsPage-loader::before {
+  content: '';
+  box-sizing: border-box;
+  display: inline-block;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spinner 0.7s linear infinite;
+  @include v.theme() {
+    border: 12px solid v.theme-get('default-opposite');
+  }
+}
+
+@keyframes UserDetailsPage-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
