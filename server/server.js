@@ -13,7 +13,6 @@ app.use(cookieParser());
 
 const usersRouter = require("./routes/users.js");
 const favoritesRouter = require("./routes/favorites.js");
-const preferencesRouter = require("./routes/preferences.js");
 const summaryRouter = require("./routes/summary.js");
 const foodEntryRouter = require('./routes/foodEntry.js')
 
@@ -22,9 +21,7 @@ const foodEntryRouter = require('./routes/foodEntry.js')
 app.use("/users", usersRouter);
 app.use("/favorites", favoritesRouter);
 app.use("/summary", summaryRouter);
-// app.use("/userDetails",userDetailsRouter)
 app.use('/foodEntry', foodEntryRouter)
-
 
 //favorites
 
