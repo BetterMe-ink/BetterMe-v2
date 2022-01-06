@@ -35,8 +35,6 @@ function ProfilePage() {
         if (!user) navigate('/signup');
     });
 
-    console.log(user);
-
     return (
         <>
             <Nav />

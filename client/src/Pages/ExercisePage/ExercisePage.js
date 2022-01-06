@@ -41,7 +41,6 @@ function ExercisePage() {
                     localStorage.setItem('exercises', JSON.stringify(res.data.slice(0, 100)));
                 })
                 .catch(err => {
-                    
                     console.log(err);
                 })
         }
@@ -65,10 +64,7 @@ function ExercisePage() {
                 setData(res.data.slice(0,100));
             })
             .catch(err => console.log(err));
-
     };
-
-    console.log(data);
 
     return (
         <>

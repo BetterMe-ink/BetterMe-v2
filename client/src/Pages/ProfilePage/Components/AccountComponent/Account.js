@@ -18,7 +18,6 @@ function Account() {
 
   const submit = async () => {
     setLoading(true)
-    console.log(FullName.current.value, Username.current.value)
     axios.put(`http://localhost:4000/users/${user.user_id}`, {
       fullName: FullName.current.value || user.fullname,
       email: Email.current.value || user.email,
@@ -27,7 +26,6 @@ function Account() {
     }, { withCredentials: true })
     .then((res) => {
       setLoading(false);
-      console.log(res);
       alert('Successfully updated!');
       window.location.reload();
     })
