@@ -23,11 +23,11 @@ import { mdiHelpCircleOutline } from '@mdi/js';
 import { mdiFlowerTulip } from '@mdi/js';
 
 function ProfilePage() {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const user = useSelector((state) => state.user.user);
-
   const [active, setActive] = useState('General');
 
   useEffect(() => {
