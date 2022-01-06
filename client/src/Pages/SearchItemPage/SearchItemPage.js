@@ -62,68 +62,110 @@ function SearchItemPage() {
           </div>
           <div className={style.container}>
             <div>
-              <h1>Vegetarian: {item && item.vegetarian ? 'Yes' : 'No'}</h1>
+              <strong>Vegetarian: </strong>
+              <h1>{item && item.vegetarian ? 'Yes' : 'No'}</h1>
               <br />
               <br />
               <br />
-              <h1>Dairy Free: {item && item.dairyFree ? 'Yes' : 'No'}</h1>
+              <strong>Dairy Free: </strong>
+              <h1>{item && item.dairyFree ? 'Yes' : 'No'}</h1>
               <br />
               <br />
               <br />
-              <h1>Vegan: {item && item.vegan ? 'Yes' : 'No'}</h1>
+              <strong>Vegan: </strong>
+              <h1>{item && item.vegan ? 'Yes' : 'No'}</h1>
             </div>
             <div>
+            <strong>Weight per Serving: </strong>
               <h1>
-                weight per Serving: {item ? item.nutrition.weightPerServing.amount : ''}
+                {item ? item.nutrition.weightPerServing.amount : ''}
                 {item ? item.nutrition.weightPerServing.unit : ''}
               </h1>
               <br />
               <br />
               <br />
-              <h1>Time to make: {item ? item.readyInMinutes : ''} min</h1>
+              <strong>Time to make:</strong>
+              <h1> {item ? item.readyInMinutes : ''} min</h1>
               <br />
               <br />
               <br />
-              <h1>Price per serving: ${item ? item.pricePerServing : ''}</h1>
+              <strong>Price per serving: </strong>
+              <h1>${item ? Math.floor(item.pricePerServing)/100 : ''}</h1>
+            </div>
+            <div>
+            <strong>Calories: </strong>
+              <h1>
+                {item ? Math.floor(item.nutrition.nutrients[0].amount) : ''} {" "}
+                {item ? item.nutrition.nutrients[0].title : ''}
+              </h1>
+              <br />
+              <br />
+              <strong>Macros:</strong>
+              <h1>
+                {item ? Math.floor(item.nutrition.nutrients[3].amount) : ''} 
+                {item ? item.nutrition.nutrients[3].unit : ''}{" "}
+                {item ? 'Carbs' : ''}{" "}
+                ({item ? Math.floor(item.nutrition.nutrients[4].amount) : ''} 
+                {item ? ' Net Carbs' : ''})
+                <br/>
+                {item ? Math.floor(item.nutrition.nutrients[1].amount) : ''}
+                {item ? item.nutrition.nutrients[1].unit : ''}{" "}
+                {item ? item.nutrition.nutrients[1].title : ''}<br/>
+                {item ? Math.floor(item.nutrition.nutrients[8].amount) : ''}
+                {item ? item.nutrition.nutrients[8].unit : ''}{" "}
+                {item ? item.nutrition.nutrients[8].title : ''}
+              </h1>
+              <br />
+              <br />
+              <strong>Smart Point Score: </strong>
+              <h1>{item ? item.weightWatcherSmartPoints + " points" : ''}</h1>
             </div>
             <br />
             <br />
             <br />
-          </div>
-          <div className={style.containerSection}>
-            <h1>Can Be Had for ?</h1>
             <div className={style.dish}>
+              <div>
+                <strong>Can Be Had for ?</strong>
+                <br/><br/>
+              </div>
+              
               {item
                 ? item.dishTypes.map((val, idx) => {
                     return <h4 key={idx}>{val}</h4>;
                   })
                 : ''}
             </div>
-
-            <br />
-            <br />
-            <br />
-
+          </div>
+          <div className={style.containerSection}>
+            <div style={{textAlign: 'center'}}>
             <h1>Ingredients</h1>
+            </div>
+
+            <br />
+            <br />
+            <br />
+
             <div className={style.slideIngredients}>
               {item
-                ? item.extendedIngredients.map((val, idx) => {
+                ? <div className={style.ingredientList}>
+                  {item.extendedIngredients.map((val, idx) => {
                     return (
-                      <div className={style.ingredientsSection} key={idx}>
+                      <label className={style.ingredientsSection} key={idx}>
                         <br />
                         <li>{val.original}</li>
-                        <input type='radio' />
-                      </div>
+                        <input className={style.checkbox}  type='checkbox' />
+                      </label>
                     );
-                  })
+                  })}
+                  </div>
                 : ''}
             </div>
           </div>
         </div>
       </div>
-      <br />
-      <br />
-      <br />
+      <br/>
+      <br/>
+      <br/>
       <Footer />
     </>
   );

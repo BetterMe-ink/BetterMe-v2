@@ -41,19 +41,12 @@ function SearchPage() {
         console.log('let get your data')
         await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=a55ef03413ed41f996c002316020cdde&number=50&query=${Search.current.value}`)
             .then((res) => {
-                console.log(res)
                 localStorage.setItem('searchFetch', JSON.stringify(res.data));
-                // console.log(res.data)
                 setData(res.data.results)
             })
             .catch((err) => console.log(err));
-
-        // return () => {
-
-        // }
     }
 
-    console.log(data);
     return (
         <>
             <Nav transition={true} />
@@ -62,7 +55,7 @@ function SearchPage() {
                     <h1>Find Your Next Meal</h1>
                     <div className={style.Bar}>
                         <input ref={Search} type="text" placeholder='Enter A Name And We Will help you to your next meal...' />
-                        <Icon 
+                        <Icon
                             onClick={createSearch}
                             className={style.search}
                             path={mdiMagnify}
