@@ -49,14 +49,14 @@ function Navigation ({ transition }) {
             <div className={style.links}>
 
                 <NavLink to='/' className={({ isActive }) => `${isActive && show ? style.active : isActive && !show  ? style.activeTemp : ''} ${show ? style.link : style.linkTemp}`}>Home</NavLink>
-                <NavLink to='/search' className={({ isActive }) => `${isActive && show ? style.active : isActive  && !show  ? style.activeTemp : ''} ${show ? style.link : style.linkTemp}`}>Search</NavLink>
-                <NavLink to='/exercise' className={({ isActive }) => `${isActive && show ? style.active : isActive  && !show  ? style.activeTemp : ''} ${show ? style.link : style.linkTemp}`}>Gym</NavLink>
+                <NavLink to='/search' className={({ isActive }) => `${isActive && show ? style.active : isActive  && !show  ? style.activeTemp : ''} ${show ? style.link : style.linkTemp}`}>Recipes</NavLink>
+                <NavLink to='/exercise' className={({ isActive }) => `${isActive && show ? style.active : isActive  && !show  ? style.activeTemp : ''} ${show ? style.link : style.linkTemp}`}>Exercises</NavLink>
 
                 { user ?
                     <>
-                        <NavLink to='/summary' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Summary</NavLink>
-                        <NavLink to='/nutrition' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Nutrition</NavLink>
-                        <NavLink to='/mealplan' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Meal Plan</NavLink>
+                        {/* <NavLink to='/summary' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Summary</NavLink> */}
+                        <NavLink to='/nutrition' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Journal</NavLink>
+                        <NavLink to='/mealplan' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Nutrition</NavLink>
                         <NavLink to='/profile' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Profile</NavLink>
                     </>
                 : 
