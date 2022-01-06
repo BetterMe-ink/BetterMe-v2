@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../Redux/slice/userSlice';
@@ -22,6 +22,9 @@ import { mdiCookieCogOutline } from '@mdi/js';
 import { mdiHelpCircleOutline } from '@mdi/js';
 import { mdiFlowerTulip } from '@mdi/js';
 
+// Themes
+import { ThemeContext } from '../../Theme/ThemeContext';
+
 function ProfilePage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -29,6 +32,8 @@ function ProfilePage() {
   const user = useSelector((state) => state.user.user);
 
   const [active, setActive] = useState('General');
+
+  const { theme, setTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     if (!user) setTimeout(() => navigate('/signup'), 1000);
@@ -93,7 +98,7 @@ function ProfilePage() {
               <div className={style.settingsSection}>
                 <p>Toggle Dark Mode</p>
                 <label className={style.switch}>
-                  <input type='checkbox' />
+                  <input type='checkbox' onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
                   <span className={`${style.slider} ${style.round}`}></span>
                 </label>
               </div>
