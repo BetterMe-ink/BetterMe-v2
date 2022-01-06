@@ -55,7 +55,7 @@ function SearchPage() {
                     <h1>Find Your Next Meal</h1>
                     <div className={style.Bar}>
                         <input ref={Search} type="text" placeholder='Enter A Name And We Will help you to your next meal...' />
-                        <Icon 
+                        <Icon
                             onClick={createSearch}
                             className={style.search}
                             path={mdiMagnify}
