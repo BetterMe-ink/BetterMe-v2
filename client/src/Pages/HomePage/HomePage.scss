@@ -23,7 +23,7 @@
   padding: 40px;
   @include v.theme() {
     color: v.theme-get('secondary1');
-    // background-color: theme-get('default-opposite');
+    // background-color: v.theme-get('default-opposite');
   }
 }
 
