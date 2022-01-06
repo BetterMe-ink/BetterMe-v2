@@ -1,6 +1,6 @@
-@use '../../Theme/variables' as v;
+@import '../../Theme/variables';
 
-.Hero {
+.Exercise-Hero {
   height: 800px;
   width: 100%;
   background-size: cover;
@@ -13,13 +13,13 @@
   align-items: center;
 
   h1 {
-    color: v.$white;
+    color: $white;
     margin-bottom: 20px;
   }
 }
 
-.Bar {
-  background-color: v.$white;
+.Exercise-Bar {
+  background-color: $white;
   padding: 10px 20px;
   border-radius: 20px;
   display: flex;
@@ -36,12 +36,12 @@
   }
 }
 
-.search {
+.Exercise-search {
   margin-left: 20px;
   cursor: pointer;
 }
 
-.content {
+.Exercise-content {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -49,7 +49,7 @@
   align-items: center;
 }
 
-.container {
+.Exercise-container {
   min-width: 85%;
   display: flex;
   flex-direction: row;

@@ -3,7 +3,7 @@
 .sideBar {
   width: 30%;
   height: 130vh;
-  background-color: v.$cadet;
+  // background-color: v.$cadet;
   display: flex;
   flex-direction: column;
   // justify-content: center;
@@ -11,18 +11,28 @@
 
   h1 {
     margin-top: 130px;
-    color: v.$baby-powder;
+    // color: v.$baby-powder;
+    @include v.theme() {
+      color: v.theme-get('secondary1');
+    }
   }
 
   h2 {
     margin-bottom: 30px;
     color: v.$baby-powder;
   }
+  @include v.theme() {
+    background-color: v.theme-get('bg-color');
+  }
 }
 
 .main {
   display: flex;
   flex-direction: row;
+  @include v.theme() {
+    background-color: theme-get('bg-color');
+    color: theme-get('text-color');
+  }
 }
 
 .container {
@@ -35,6 +45,11 @@
       font-size: 1.3em;
       line-height: 1.5em;
     }
+  }
+
+  @include v.theme() {
+    background-color: theme-get('bg-color');
+    color: theme-get('test');
   }
 }
 

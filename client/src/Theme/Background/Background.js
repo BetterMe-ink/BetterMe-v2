@@ -1,7 +1,7 @@
 import React from 'react';
-import style from './Background.module.scss';
+import './Background.scss';
 const Background = ({ children }) => {
-  return <div className={style.bg}>{children}</div>;
+  return <div className={'bg'}>{children}</div>;
 };
 
 export default Background;

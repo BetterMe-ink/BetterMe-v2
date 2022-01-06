@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../Redux/slice/userSlice';
 
-import style from './ProfilePage.module.scss';
+import './ProfilePage.scss';
 
 import Nav from '../../Components/Navigation/Navigation';
 import Footer from '../../Components/Footer/Footer';
@@ -34,6 +34,7 @@ function ProfilePage() {
   const [active, setActive] = useState('General');
 
   const { theme, setTheme } = useContext(ThemeContext);
+  console.log('Current Theme:\t', theme);
 
   useEffect(() => {
     if (!user) setTimeout(() => navigate('/signup'), 1000);
@@ -43,35 +44,35 @@ function ProfilePage() {
     <>
       <Nav />
 
-      <div className={style.main}>
-        <div className={style.sideBar}>
+      <div className={'main'}>
+        <div className={'sideBar'}>
           <h1>Account Page</h1>
-          <img className={style.image} src={placeholder} alt='' />
+          <img className={'image'} src={placeholder} alt='' />
 
           <h2>{user ? user.fullname : ''}</h2>
-          <div className={style.actions}>
-            <div className={`${active === 'General' ? style.active : ''}`} onClick={() => setActive('General')}>
-              <Icon path={mdiFlowerTulip} size={1.5} className={style.iconSvg} />
+          <div className={'actions'}>
+            <div className={`${active === 'General' ? 'active' : ''}`} onClick={() => setActive('General')}>
+              <Icon path={mdiFlowerTulip} size={1.5} className={'iconSvg'} />
               <p>General</p>
             </div>
 
-            <div className={`${active === 'Settings' ? style.active : ''}`} onClick={() => setActive('Settings')}>
-              <Icon path={mdiCogOutline} size={1.5} className={style.iconSvg} />
+            <div className={`${active === 'Settings' ? 'active' : ''}`} onClick={() => setActive('Settings')}>
+              <Icon path={mdiCogOutline} size={1.5} className={'iconSvg'} />
               <p>Settings</p>
             </div>
 
-            <div className={`${active === 'Account' ? style.active : ''}`} onClick={() => setActive('Account')}>
-              <Icon path={mdiAccountCogOutline} size={1.5} className={style.iconSvg} />
+            <div className={`${active === 'Account' ? 'active' : ''}`} onClick={() => setActive('Account')}>
+              <Icon path={mdiAccountCogOutline} size={1.5} className={'iconSvg'} />
               <p>Account</p>
             </div>
 
-            <div className={`${active === 'Help' ? style.active : ''}`} onClick={() => setActive('Help')}>
-              <Icon path={mdiHelpCircleOutline} size={1.5} className={style.iconSvg} />
+            <div className={`${active === 'Help' ? 'active' : ''}`} onClick={() => setActive('Help')}>
+              <Icon path={mdiHelpCircleOutline} size={1.5} className={'iconSvg'} />
               <p>Help</p>
             </div>
 
-            <div className={`${active === 'Privacy' ? style.active : ''}`} onClick={() => setActive('Privacy')}>
-              <Icon path={mdiCookieCogOutline} size={1.5} className={style.iconSvg} />
+            <div className={`${active === 'Privacy' ? 'active' : ''}`} onClick={() => setActive('Privacy')}>
+              <Icon path={mdiCookieCogOutline} size={1.5} className={'iconSvg'} />
               <p>Privacy & Safety</p>
             </div>
           </div>
@@ -81,13 +82,13 @@ function ProfilePage() {
               dispatch(logout());
               window.location.replace('/');
             }}
-            className={style.logout}
+            className={'logout'}
           >
-            <Icon path={mdiLogout} size={1.5} className={style.iconSvg} />
+            <Icon path={mdiLogout} size={1.5} className={'iconSvg'} />
             <h1>Logout</h1>
           </div>
         </div>
-        <div className={style.container}>
+        <div className={'container'}>
           {active === 'General' ? (
             <General />
           ) : active === 'Settings' ? (
@@ -95,11 +96,11 @@ function ProfilePage() {
               <h1>Setting Components</h1>
               <br />
               <br />
-              <div className={style.settingsSection}>
+              <div className={'settingsSection'}>
                 <p>Toggle Dark Mode</p>
-                <label className={style.switch}>
-                  <input type='checkbox' onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
-                  <span className={`${style.slider} ${style.round}`}></span>
+                <label className={'switch'}>
+                  <input type='checkbox' defaultChecked={theme === 'dark' ? true : false} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} />
+                  <span className={`${'slider'} ${'round'}`}></span>
                 </label>
               </div>
             </div>
