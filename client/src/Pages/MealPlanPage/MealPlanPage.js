@@ -305,7 +305,7 @@ function MealPage() {
                           </td>
 
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-${rateHealthC(f.total_calories)}-100 text-${rateHealthC(f.total_calories)}-800}`}>
+                            <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-${rateHealthC(f.total_calories)}-100 text-${rateHealthC(f.total_calories)}-800`}>
                               {rateHealth(f.total_calories)}
                             </span>
                           </td>
