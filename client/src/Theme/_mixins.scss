@@ -1,7 +1,9 @@
+@use './variables' as v;
+
 $theme-map: null;
 
 @mixin theme() {
-  @each $theme, $map in $themes {
+  @each $theme, $map in v.$themes {
     // $theme: darkTheme, lightTheme
     // $map: ('text-color': ..., 'bg-color': ...)
 

@@ -14,69 +14,69 @@ import Account from './Components/AccountComponent/Account';
 import General from './Components/GeneralComponent/General';
 
 function ProfilePage() {
-    const navigate = useNavigate();
-    const user = useSelector(state => state.user.user);
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user.user);
 
-    const [active, setActive] = useState('General');
+  const [active, setActive] = useState('General');
 
-    useEffect(()=> {
-        if (!user) navigate('/signup');
-    });
+  useEffect(() => {
+    if (!user) navigate('/signup');
+  });
 
-    console.log(user);
+  console.log(user);
 
-    return (
-        <>
-            <Nav />
+  return (
+    <>
+      <Nav />
 
-                <div className={style.main}>
-                    <div className={style.sideBar}>
-                        <h1>Account Page</h1>
-                        <img className={style.image} src={placeholder} alt="" />
+      <div className={style.main}>
+        <div className={style.sideBar}>
+          <h1>Account Page</h1>
+          <img className={style.image} src={placeholder} alt='' />
 
-                        <h2>{ user ? user.fullname : ''}</h2>
-                        <div className={style.actions}>
+          <h2>{user ? user.fullname : ''}</h2>
+          <div className={style.actions}>
+            <div className={`${active === 'General' ? style.active : ''}`} onClick={() => setActive('General')}>
+              <p>General</p>
+            </div>
 
-                            <div className={`${active === 'General' ? style.active : ''}`} onClick={() => setActive('General')}>
-                                <p>General</p>
-                            </div>
+            <div className={`${active === 'Settings' ? style.active : ''}`} onClick={() => setActive('Settings')}>
+              <p>Settings</p>
+            </div>
 
-                            <div className={`${active === 'Settings' ? style.active : ''}`} onClick={() => setActive('Settings')}>
-                                <p>Settings</p>
-                            </div>
+            <div className={`${active === 'Account' ? style.active : ''}`} onClick={() => setActive('Account')}>
+              <p>Account</p>
+            </div>
 
-                            <div className={`${active === 'Account' ? style.active : ''}`} onClick={() => setActive('Account')}>
-                                <p>Account</p>
-                            </div>
+            <div className={`${active === 'Help' ? style.active : ''}`} onClick={() => setActive('Help')}>
+              <p>Help</p>
+            </div>
 
-                            <div className={`${active === 'Help' ? style.active : ''}`} onClick={() => setActive('Help')}>
-                                <p>Help</p>
-                            </div>
+            <div className={`${active === 'Privacy' ? style.active : ''}`} onClick={() => setActive('Privacy')}>
+              <p>Privacy & Safety</p>
+            </div>
+          </div>
+        </div>
+        <div className={style.container}>
+          {active === 'General' ? (
+            <General />
+          ) : active === 'Settings' ? (
+            <h1>Setting Components</h1>
+          ) : active === 'Account' ? (
+            <Account />
+          ) : active === 'Help' ? (
+            <h1>Help Component</h1>
+          ) : active === 'Privacy' ? (
+            <h1>Privacy & Safety</h1>
+          ) : (
+            ''
+          )}
+        </div>
+      </div>
 
-                            <div className={`${active === 'Privacy' ? style.active : ''}`} onClick={() => setActive('Privacy')}>
-                                <p>Privacy & Safety</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div className={style.container}>
-                        { active === 'General' ? 
-                            <General />
-                        : active === 'Settings' ? 
-                            <h1>Setting Components</h1>
-                        : active === 'Account' ? 
-                            <Account />
-                        : active === 'Help' ? 
-                            <h1>Help Component</h1>
-                        : active === 'Privacy' ? 
-                            <h1>Privacy & Safety</h1>
-                        : ''}
-                    </div>
-                </div>
-
-            <Footer />
-        </>
-    )
+      <Footer />
+    </>
+  );
 }
 
 export default ProfilePage;

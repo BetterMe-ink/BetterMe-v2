@@ -25,3 +25,14 @@ $green-sheen: #64b6acff;
 $celeste: #c0fdfbff;
 $light-cyan: #d0fdfbff;
 $light-cyan-2: #dcfdfbff;
+
+$themes: (
+  darkTheme: (
+    'text-color': $white,
+    'bg-color': #424242,
+  ),
+  lightTheme: (
+    'text-color': $black,
+    'bg-color': $baby-powder,
+  ),
+);
