@@ -24,6 +24,7 @@ function MealPage() {
 
   const [close, setClose] = useState(false);
   const [food, setFood] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!user) setTimeout(() => navigate("/signup"), 1000);
@@ -34,7 +35,8 @@ function MealPage() {
       axios
         .get(`http://localhost:4000/foodEntry/${user.user_id}`)
         .then((res) => {
-          setFood((prev) => [...prev, ...res.data]);
+            console.log(res)
+            if (res.data !== 'No entries found') setFood((prev) => [...prev, ...res.data]);
         });
     }
   }, [user]);
@@ -68,6 +70,7 @@ function MealPage() {
   }
 
   const submitJournal = () => {
+    // setLoading(true)
     axios
       .all([
         axios.get(
@@ -105,13 +108,22 @@ function MealPage() {
             date_created: getDateInSQLFormat(),
           })
           .then((res) => {
+            // setLoading(false);
+            console.log(res);
             setFood((prev) => [...prev, res.data]);
+            setClose(true)
             localStorage.setItem("calories", JSON.stringify({value: food}));
             Cookie.set('filledOut', 1, {expires: 1});
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+              console.log(err);
+              setLoading(false);
+          });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+          console.log(err);
+          setLoading(false);
+      });
   };
 
   if (localStorage.getItem("calories")) localStorage.getItem("calories");
@@ -123,6 +135,11 @@ function MealPage() {
       <div className={style.main}>
         {/* { filledOut ?  */}
         <div className={`${style.overlay} ${close ? style.close : ""}`}>
+          { loading ? (
+            <div className={style.loadingDiv}>
+                <div className={style.loader}></div>
+            </div>
+            ) :
           <div className={style.popover}>
             <h1>Food Journal</h1>
             <br />
@@ -173,7 +190,8 @@ function MealPage() {
                 Submit
               </button>
             </div>
-          </div>
+            </div> 
+        }
         </div>
         {/* : '' } */}
         <div
@@ -255,7 +273,7 @@ function MealPage() {
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      {food.map((f, idx) =>{
+                      { food && food.length > 0 && food[food.length - 1].meal1 ? food.map((f, idx) =>{
                             const m = moment(f.date_created).format('dddd')
                         return (
                         <tr key={idx}>
@@ -322,7 +340,13 @@ function MealPage() {
                             </div>
                           </td>
                         </tr>
-                      )})}
+                      )}) : 
+                            <tr>
+                                <td>
+                                    <p style={{marginLeft: '10px', padding: '10px'}}>Empty For Now </p>
+                                </td>
+                            </tr>
+                      }
                     </tbody>
                   </table>
                 </div>
