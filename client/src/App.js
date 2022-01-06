@@ -17,39 +17,35 @@ import ExercisePage from './Pages/ExercisePage/ExercisePage';
 import ScrollToTop from './Components/ScrollToTop';
 
 function App() {
-
-
   return (
-      <div className="App">
-        <Router>
-            {/* Tweek the scroll behaviour in the index.css file to get a smooth scrolling animation */}
-            <ScrollToTop />
-          <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route path='/search' element={<SearchPage />} />
-            <Route path='/search/:id' element={<SearchItemPage />} />
-            <Route path='/exercise' element={<ExercisePage />} />
+    <div className='App'>
+      <Router>
+        {/* Tweek the scroll behaviour in the index.css file to get a smooth scrolling animation */}
+        <ScrollToTop />
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/search' element={<SearchPage />} />
+          <Route path='/search/:id' element={<SearchItemPage />} />
+          <Route path='/exercise' element={<ExercisePage />} />
 
-            <Route path='/summary' element={<SummaryPage />} />
-            <Route path='/profile' element={<ProfilePage />} />
+          <Route path='/summary' element={<SummaryPage />} />
+          <Route path='/profile' element={<ProfilePage />} />
 
-            <Route path='/nutrition' element={<NutritionPage />} />
-            <Route path='/mealplan' element={<MealPlanPage />} />
+          <Route path='/nutrition' element={<NutritionPage />} />
+          <Route path='/mealplan' element={<MealPlanPage />} />
 
-            <Route path='/signup' element={<SignUpPage />} />
-            <Route path='/login' element={<LoginPage />} />
+          <Route path='/signup' element={<SignUpPage />} />
+          <Route path='/login' element={<LoginPage />} />
 
-            <Route path='/userdetails' element={<UserDetailsPage />} />
+          <Route path='/userdetails' element={<UserDetailsPage />} />
 
-            <Route path='/error' element={<ErrorPage />} />
-            <Route path='*' element={<NotFoundPage />} />
+          <Route path='/error' element={<ErrorPage />} />
+          <Route path='*' element={<NotFoundPage />} />
+        </Routes>
 
-          </Routes>
-
-          {/* <Footer /> */}
-        </Router>
-
-      </div>
+        {/* <Footer /> */}
+      </Router>
+    </div>
   );
 }
 

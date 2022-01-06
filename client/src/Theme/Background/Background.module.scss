@@ -1,13 +1,4 @@
-// Utilities
-@import 'utilities/variables';
+@use '../variables' as v;
 
-// Base Rules
-@import 'base/normalize';
-@import 'base/global';
 .bg {
-  --color-background: #38444c;
-  --color-border: #697278;
-  --color-text-default: #f0f2f3;
-  --color-base: #293238;
-  --color-accent: #ec1a62;
 }
