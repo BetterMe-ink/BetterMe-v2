@@ -38,11 +38,9 @@ function SearchPage() {
     const Search = useRef(null);
     
     const createSearch = async () => {
-        console.log('let get your data')
         await axios.get(`https://api.spoonacular.com/recipes/complexSearch?apiKey=a55ef03413ed41f996c002316020cdde&number=50&query=${Search.current.value}`)
             .then((res) => {
                 localStorage.setItem('searchFetch', JSON.stringify(res.data));
-                // console.log(res.data)
                 setData(res.data.results)
             })
             .catch((err) => console.log(err));
@@ -52,7 +50,6 @@ function SearchPage() {
         // }
     }
 
-    console.log(data);
     return (
         <>
             <Nav transition={true} />

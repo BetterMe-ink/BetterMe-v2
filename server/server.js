@@ -21,7 +21,6 @@ const foodEntryRouter = require('./routes/foodEntry.js')
 //user/login
 app.use("/users", usersRouter);
 app.use("/favorites", favoritesRouter);
-app.use("/preferences", preferencesRouter);
 app.use("/summary", summaryRouter);
 // app.use("/userDetails",userDetailsRouter)
 app.use('/foodEntry', foodEntryRouter)

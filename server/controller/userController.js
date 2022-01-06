@@ -33,21 +33,17 @@ userController.login = (req, res, next) => {
 }
 
 userController.signup = (req, res, next) => {
-  console.log('A')
   const { fullName, username, password, email } = req.body;
   const q = "SELECT * FROM users WHERE username=($1) OR email=($2)";
   try {
     db.query(q, [username, email], async (err, user)=>{
       if (user.rows.length > 0) {
-        console.log('B')
         res.locals.error =
         "Account with this username/email already exists. Please try with different username/email";
         next();
       } else {
-        console.log('C')
         try {
           const hash = await bcrypt.hash(password, 10)
-          console.log(hash)
           db.query(
             "INSERT INTO users (username, fullName, password, email) VALUES (($1), ($2), ($3), ($4)) RETURNING *", 
             [username, fullName, hash, email], 

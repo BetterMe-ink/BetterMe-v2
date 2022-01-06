@@ -73,7 +73,6 @@ function SignUpPage() {
                                 <button type='button' onClick={(e) => {
                                     e.preventDefault();
                                     submit()
-                                    console.log('clicked')
                                 }} className={style.btn}>Submit</button>
                         </form>
                     </div>
