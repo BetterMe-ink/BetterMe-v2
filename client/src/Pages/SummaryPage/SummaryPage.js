@@ -15,7 +15,7 @@ function SummaryPage() {
     const [data, setData] = useState(null);
 
     useEffect(()=> {
-        if(!user) navigate('/signup');
+        if(!user) setTimeout(()=>navigate('/signup'), 1000)
 
         if (user) {
             axios.get(`http://localhost:4000/favorites/${user.user_id}`)

@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import parse from 'html-react-parser';
 
 import Cookie from 'js-cookie';
 
@@ -13,16 +14,19 @@ function SearchItemPage() {
 
     const { id } = useParams();
 
-    const [item, setItem] = useState(null);
+    // const [item, setItem] = useState(null);
 
-    useEffect(() => {
-        axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=a55ef03413ed41f996c002316020cdde`)
-            .then(res => {
-                localStorage.setItem('item', JSON.stringify(res.data));
-                setItem(res.data)
-            })
-            .catch(err => console.log(err));
-    }, [id])
+    // useEffect(() => {
+    //     axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true&apiKey=a55ef03413ed41f996c002316020cdde`)
+    //         .then(res => {
+    //             localStorage.setItem('item', JSON.stringify(res.data));
+    //             setItem(res.data)
+    //         })
+    //         .catch(err => console.log(err));
+    // }, [id])
+
+    const item = JSON.parse(localStorage.getItem('item'));
+    console.log(item);
 
     const user = useSelector(state => state.user.user);
 
@@ -42,45 +46,40 @@ function SearchItemPage() {
                         <div className={style.SearchItemPage}>
                             <div className={style.col1}>
                                 <img src={item ? item.image : ''} alt={item ? item.name : ''} />
+                                { user ? <button onClick={addFav}>Add to your recipes List</button> : '' }
                             </div>
 
                             <div className={style.col2}>
 
                                 <h1 className={style.title}>{item ? item.title : ''}</h1>
                                 <br />
-                                <h1>{item ? item.sourceName : ''}</h1>
+                                <h1>* {item ? item.sourceName : ''}</h1>
                                 <br />
                                 <br />
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit ut harum labore dolorem perspiciatis fugiat quibusdam, inventore, iste quia et eos sapiente nesciunt nostrum eius illum itaque aperiam facere corporis!</p>
+                                <p className={style.summary}>{item &&item ? parse(item.summary) : ''}</p>
                                 <br /><br />
-                                { user ? <button onClick={addFav}>Add to your recipes List</button> : '' }
                             </div>
                         </div>
-                        <div>
-                            <h1>Is this item cheap: {item && item.cheap ? 'No' : 'Yes' }</h1>
-                            <br /><br /><br />
-                            <p>{item &&item ? item.summary : ''}</p>
-                            <br /><br /><br />
-                            <h1>Dairy Free: {item && item.dairyFree ? 'No' : 'Yes' }</h1>
-                            <br /><br /><br />
-                            <h1>Is this item sustainable: {item && item.sustainable ? 'No' : 'Yes' }</h1>
-                            <br /><br /><br />
-                            <h1>Very healthy: {item && item.veryHealthy ? 'No' : 'Yes' }</h1>
-                            <br /><br /><br />
-                            <h1>Vegan: {item && item.vegan ? 'No' : 'Yes' }</h1>
-                            <br /><br /><br />
-                            <h1>Vegetarian: {item && item.vegetarian ? 'No' : 'Yes' }</h1>
-                            <br /><br /><br />
-                            <h1>weight per Serving: {item ? item.nutrition.weightPerServing.amount : ''}{item ? item.nutrition.weightPerServing.unit : ''}</h1>
-                            <br /><br /><br />
-                            <h1>Time to make: {item ? item.readyInMinutes : ''} min</h1>
-                            <br /><br /><br />
-                            <h1>Wine Paring: {item ? item.winePairing.pairingText : ''}</h1>
-                            <br /><br /><br />
-                            <h1>Price per serving: ${item ? item.pricePerServing : ''}</h1>
-                            <br /><br /><br />
-
+                        <div className={style.container}>
                             <div>
+                                <h1>Vegetarian: {item && item.vegetarian ? 'Yes' : 'No' }</h1>
+                                <br /><br /><br />
+                                <h1>Dairy Free: {item && item.dairyFree ? 'Yes' : 'No' }</h1>
+                                <br /><br /><br />
+                                <h1>Vegan: {item && item.vegan ? 'Yes' : 'No' }</h1>
+                            </div>
+                            <div>
+                                <h1>weight per Serving: {item ? item.nutrition.weightPerServing.amount : ''}{item ? item.nutrition.weightPerServing.unit : ''}</h1>
+                                <br /><br /><br />
+                                <h1>Time to make: {item ? item.readyInMinutes : ''} min</h1>
+                                <br /><br /><br />
+                                <h1>Price per serving: ${item ? item.pricePerServing : ''}</h1>
+                            </div>
+                            <br /><br /><br />
+                        </div>
+                        <div className={style.containerSection}>
+                            <h1>Can Be Had for ?</h1>
+                            <div className={style.dish}>
                                 {item ? item.dishTypes.map((val, idx) => {
                                     return <h4 key={idx}>{val}</h4>
                                 }) : ''}
@@ -93,9 +92,10 @@ function SearchItemPage() {
                             <div className={style.slideIngredients}>
                                 {item ? item.extendedIngredients.map((val, idx) => {
                                     return (
-                                        <div key={idx}>
-                                            <img src={val.image} alt="" />
-                                            <h1>{val.aisle}</h1>
+                                        <div className={style.ingredientsSection} key={idx}>
+                                            <br />
+                                            <li>{val.original}</li>
+                                            <input type='radio' />
                                         </div>
                                     )
                                 }) : ''}
@@ -103,6 +103,7 @@ function SearchItemPage() {
                         </div>
                     </div>
                 </div>
+                <br /><br /><br />
             <Footer />
         </>
     )
