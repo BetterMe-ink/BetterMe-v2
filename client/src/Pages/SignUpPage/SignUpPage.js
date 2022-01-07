@@ -8,85 +8,6 @@ import Nav from '../../Components/Navigation/Navigation';
 import yoga from '../../images/yoga.jpg';
 
 function SignUpPage() {
-<<<<<<< HEAD
-
-    const navigate = useNavigate();
-
-    const [loading, setLoading] = useState(false);
-
-    const FullName = useRef(null);
-    const Username = useRef(null);
-    const Email = useRef(null);
-    const Password = useRef(null);
-
-    const submit = async () => {
-        setLoading(true);
-        await axios.post('http://localhost:4000/users', {
-                fullName: FullName.current.value,
-                username: Username.current.value,
-                email: Email.current.value,
-                password: Password.current.value,
-        }, { withCredentials: true })
-            .then((res) => {
-                if(res.data){
-                    window.location.replace('/userdetails');
-                } else {
-                    alert('this username or password already exists')
-                    window.location.replace('/signup');
-                }
-            })
-            .catch((err) => {
-                setLoading(false);
-                console.log(err);
-            })
-    }
-
-    return (
-        <>
-            <Nav />
-            <div style={{backgroundImage: `url(${yoga})`}} className={style.main}>
-                { loading ? 
-                        <div className={style.loader}></div>
-                    :
-                    <div className={style.container}>
-                        <form className={style.content}> 
-                                <h1>Sign Up</h1>
-                                <br /><br />
-
-                                <label htmlFor="nameS">Full Name</label>
-                                <br />
-                                <input ref={FullName} id='nameS' type="text" placeholder='Enter Your Name...' />
-
-                                <br /><br />
-
-                                <label htmlFor="username">Username</label>
-                                <br />
-                                <input ref={Username} id='username' type="text" placeholder='Enter Your Username...' />
-
-                                <br /><br />
-
-                                <label htmlFor="email">Email</label>
-                                <br />
-                                <input ref={Email} id='email' type="text" placeholder='Enter Your Email...' />
-
-                                <br /><br /><br />
-                                
-                                <label  htmlFor="passwordS">Password</label>
-                                <br />
-                                <input ref={Password} id='passwordS' type="password" placeholder='Enter Your Password...' />
-
-                                <br /><br /><br />
-                                <button type='button' onClick={(e) => {
-                                    e.preventDefault();
-                                    submit()
-                                }} className={style.btn}>Submit</button>
-                        </form>
-                    </div>
-                }
-            </div>
-        </>
-    )
-=======
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
@@ -176,7 +97,6 @@ function SignUpPage() {
       </div>
     </>
   );
->>>>>>> dev
 }
 
 export default SignUpPage;

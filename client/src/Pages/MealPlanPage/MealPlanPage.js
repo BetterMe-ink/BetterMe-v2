@@ -8,7 +8,7 @@ import moment from 'moment';
 import Nav from '../../Components/Navigation/Navigation';
 import Footer from '../../Components/Footer/Footer';
 
-import style from './MealPlanPage.module.scss';
+import './MealPlanPage.scss';
 // import '../../index.css';
 
 import exercise from '../../images/exercise.jpg';
@@ -24,6 +24,7 @@ function MealPage() {
 
   const [close, setClose] = useState(false);
   const [food, setFood] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (!user) setTimeout(() => navigate('/signup'), 1000);
@@ -31,9 +32,12 @@ function MealPage() {
     else if (close) setClose(false);
 
     if (user) {
-      axios.get(`http://localhost:4000/foodEntry/${user.user_id}`).then(res => {
-        setFood(prev => [...prev, ...res.data]);
-      });
+      axios
+        .get(`http://localhost:4000/foodEntry/${user.user_id}`)
+        .then((res) => {
+            console.log(res)
+            if (res.data !== 'No entries found') setFood((prev) => [...prev, ...res.data]);
+        });
     }
   }, [user]);
 
@@ -69,6 +73,7 @@ function MealPage() {
   };
 
   const submitJournal = () => {
+    // setLoading(true)
     axios
       .all([
         axios.get(
@@ -105,14 +110,23 @@ function MealPage() {
             weight: '50kg',
             date_created: getDateInSQLFormat(),
           })
-          .then(res => {
-            setFood(prev => [...prev, res.data]);
-            localStorage.setItem('calories', JSON.stringify({ value: food }));
-            Cookie.set('filledOut', 1, { expires: 1 });
+          .then((res) => {
+            // setLoading(false);
+            console.log(res);
+            setFood((prev) => [...prev, res.data]);
+            setClose(true)
+            localStorage.setItem("calories", JSON.stringify({value: food}));
+            Cookie.set('filledOut', 1, {expires: 1});
           })
-          .catch(err => console.log(err));
+          .catch((err) => {
+              console.log(err);
+              setLoading(false);
+          });
       })
-      .catch(err => console.log(err));
+      .catch((err) => {
+          console.log(err);
+          setLoading(false);
+      });
   };
 
   if (localStorage.getItem('calories')) localStorage.getItem('calories');
@@ -123,11 +137,12 @@ function MealPage() {
       <Nav />
       <div className={'MealPlanPage-main'}>
         {/* { filledOut ?  */}
-        <div
-          className={`${'MealPlanPage-overlay'} ${
-            close ? 'MealPlanPage-close' : ''
-          }`}
-        >
+        <div className={`${'MealPlanPage-overlay'} ${close ? 'MealPlanPage-close' : ""}`}>
+          { loading ? (
+            <div className={'MealPlanPage-loadingDiv'}>
+                <div className={'MealPlanPage-loader'}></div>
+            </div>
+            ) :
           <div className={'MealPlanPage-popover'}>
             <h1>Food Journal</h1>
             <br />
@@ -184,7 +199,8 @@ function MealPage() {
                 Submit
               </button>
             </div>
-          </div>
+            </div> 
+        }
         </div>
         {/* : '' } */}
         <div
@@ -266,8 +282,8 @@ function MealPage() {
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      {food.map((f, idx) => {
-                        const m = moment(f.date_created).format('dddd');
+                      { food && food.length > 0 && food[food.length - 1].meal1 ? food.map((f, idx) =>{
+                            const m = moment(f.date_created).format('dddd')
                         return (
                           <tr key={idx}>
                             <td className="px-6 py-4 whitespace-nowrap">
@@ -314,17 +330,11 @@ function MealPage() {
                               </div>
                             </td>
 
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <span
-                                className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-${rateHealthC(
-                                  f.total_calories
-                                )}-100 text-${rateHealthC(
-                                  f.total_calories
-                                )}-800}`}
-                              >
-                                {rateHealth(f.total_calories)}
-                              </span>
-                            </td>
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-${rateHealthC(f.total_calories)}-100 text-${rateHealthC(f.total_calories)}-800`}>
+                              {rateHealth(f.total_calories)}
+                            </span>
+                          </td>
 
                             <td className="px-6 py-4 whitespace-nowrap">
                               <div className="text-sm text-gray-900">
@@ -332,12 +342,19 @@ function MealPage() {
                               </div>
                             </td>
 
-                            <td className="px-6 py-4 whitespace-nowrap">
-                              <div className="text-sm text-gray-900">{m}</div>
-                            </td>
-                          </tr>
-                        );
-                      })}
+                          <td className="px-6 py-4 whitespace-nowrap">
+                            <div className="text-sm text-gray-900">
+                              {m}
+                            </div>
+                          </td>
+                        </tr>
+                      )}) : 
+                            <tr>
+                                <td>
+                                    <p style={{marginLeft: '10px', padding: '10px'}}>Empty For Now </p>
+                                </td>
+                            </tr>
+                      }
                     </tbody>
                   </table>
                 </div>

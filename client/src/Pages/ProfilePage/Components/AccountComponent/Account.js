@@ -8,11 +8,8 @@ function Account() {
   const [loading, setLoading] = useState(false);
   const user = useSelector(state => state.user.user);
 
-<<<<<<< HEAD
-=======
   const date = moment(user.date_joined);
-
->>>>>>> dev
+  
   const FullName = useRef(null);
   const Email = useRef(null);
   const Username = useRef(null);

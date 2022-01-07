@@ -93,7 +93,7 @@ function Navigation({ transition }) {
 
         {user ? (
           <>
-            <NavLink
+            {/* <NavLink
               to="/summary"
               className={({ isActive }) =>
                 `${isActive && show ? 'Navigation-active' : ''} ${
@@ -102,8 +102,8 @@ function Navigation({ transition }) {
               }
             >
               Summary
-            </NavLink>
-            <NavLink
+            </NavLink> */}
+            {/* <NavLink
               to="/nutrition"
               className={({ isActive }) =>
                 `${isActive && show ? 'Navigation-active' : ''} ${
@@ -112,7 +112,7 @@ function Navigation({ transition }) {
               }
             >
               Nutrition
-            </NavLink>
+            </NavLink> */}
             <NavLink
               to="/mealplan"
               className={({ isActive }) =>
@@ -158,5 +158,25 @@ function Navigation({ transition }) {
     </header>
   );
 }
+
+//                 { user ?
+//                     <>
+//                         {/* <NavLink to='/summary' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Summary</NavLink> */}
+//                         <NavLink to='/mealplan' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Journal</NavLink>
+//                         <NavLink to='/nutrition' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Nutrition</NavLink>
+//                         <NavLink to='/profile' className={({ isActive }) => `${isActive && show ? style.active : ''} ${show ? style.link : style.linkTemp}`}>Profile</NavLink>
+//                     </>
+//                 : 
+//                     <>
+//                         <Link to='/login' className={`${show ? style.btn : style.btnTemp} ${route === '/login' ? style.btnFocus : ''}`}>Login</Link>
+//                         <Link to='/signup' className={`${show ? style.btn : style.btnTemp} ${route === '/signup' ? style.btnFocus : ''}`}>Sign Up</Link>
+//                     </>
+//                 }
+//             </div>
+            
+//         </header>
+//     )
+
+// };
 
 export default Navigation;

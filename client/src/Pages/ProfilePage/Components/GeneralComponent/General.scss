@@ -72,3 +72,30 @@
     border-bottom: 3px solid v.theme-get('default-color');
   }
 }
+
+.loadingDiv {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader::before {
+  content: '';
+  box-sizing: border-box;
+  display: inline-block;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 12px solid v.$cadet;
+  border-top-color: transparent;
+  animation: spinner 0.7s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
