@@ -1,9 +1,9 @@
 @use '../../Theme/variables' as v;
 
-.sideBar {
+.ProfilePage-sideBar {
   width: 30%;
   height: 130vh;
-  background-color: v.$cadet;
+  // background-color: v.$cadet;
   display: flex;
   flex-direction: column;
   // justify-content: center;
@@ -11,21 +11,29 @@
 
   h1 {
     margin-top: 130px;
-    color: v.$baby-powder;
+    // color: v.$baby-powder;
+    @include v.theme() {
+      color: v.theme-get('secondary1');
+    }
   }
 
   h2 {
     margin-bottom: 30px;
-    color: v.$baby-powder;
+    @include v.theme() {
+      color: v.theme-get('secondary1');
+    }
+  }
+  @include v.theme() {
+    background-color: v.theme-get('primary1');
   }
 }
 
-.main {
+.ProfilePage-main {
   display: flex;
   flex-direction: row;
 }
 
-.container {
+.ProfilePage-container {
   margin-top: 100px;
   width: 70%;
   padding: 30px;
@@ -36,50 +44,58 @@
       line-height: 1.5em;
     }
   }
+
+  @include v.theme() {
+    background-color: v.theme-get('secondary1');
+  }
 }
 
-.switch {
+.ProfilePage-switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
 }
 
-.switch input {
+.ProfilePage-switch input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.slider {
+.ProfilePage-slider {
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: v.$cadet;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  @include v.theme() {
+    background-color: v.theme-get('primary1');
+  }
 }
 
-.slider:before {
+.ProfilePage-slider:before {
   position: absolute;
   content: '';
   height: 26px;
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: v.$white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
+  }
 }
 
-input:checked + .slider {
+input:checked + .ProfilePage-slider {
   background-color: #2196f3;
 }
 
-input:focus + .slider {
+input:focus + .ProfilePage-slider {
   box-shadow: 0 0 1px #2196f3;
 }
 
@@ -90,15 +106,15 @@ input:checked + .slider:before {
 }
 
 /* Rounded sliders */
-.slider.round {
+.ProfilePage-slider.ProfilePage-round {
   border-radius: 34px;
 }
 
-.slider.round:before {
+.ProfilePage-slider.ProfilePage-round:before {
   border-radius: 50%;
 }
 
-.settingsSection {
+.ProfilePage-settingsSection {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -109,14 +125,14 @@ input:checked + .slider:before {
   }
 }
 
-.image {
+.ProfilePage-image {
   margin-top: 50px;
   width: 150px;
   height: 150px;
   margin-bottom: 50px;
 }
 
-.actions {
+.ProfilePage-actions {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -126,8 +142,10 @@ input:checked + .slider:before {
   width: 100%;
 
   p {
-    color: v.$baby-powder;
     font-size: 1.35rem;
+    @include v.theme() {
+      color: v.theme-get('secondary1');
+    }
   }
 
   div {
@@ -139,15 +157,19 @@ input:checked + .slider:before {
   }
 
   div:hover {
-    background-color: v.$blackishOpaque;
+    @include v.theme() {
+      background-color: v.theme-get('defaultish-opaque');
+    }
   }
 }
 
-.active {
-  background-color: v.$blackishOpaque;
+.ProfilePage-active {
+  @include v.theme() {
+    background-color: v.theme-get('defaultish-opaque');
+  }
 }
 
-.logout {
+.ProfilePage-logout {
   position: absolute;
   bottom: 30px;
   cursor: pointer;
@@ -164,6 +186,8 @@ input:checked + .slider:before {
   }
 }
 
-.iconSvg {
-  color: v.$white;
+.ProfilePage-iconSvg {
+  @include v.theme() {
+    color: v.theme-get('default-opposite');
+  }
 }

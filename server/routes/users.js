@@ -7,13 +7,14 @@ router.post("/", userController.signup, (req, res) => {
   res.status(200).json(res.locals.newUser)
 });
 router.post("/login", userController.login, (req, res) => {
-  if (res.locals.error) {
-    res.status(400).json({ error: res.locals.error });
-  }
   if (res.locals.message) {
     res.status(200).json({ message: res.locals.message });
   }
+  if (res.locals.error) {
+    res.status(400).json({ error: res.locals.error });
+  }
 });
+
 router.put("/:id", userController.update, async (req, res) => {
   return res.status(200).json("User Details updated successfully");
 })

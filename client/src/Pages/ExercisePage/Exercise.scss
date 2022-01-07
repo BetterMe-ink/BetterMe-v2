@@ -1,6 +1,6 @@
 @use '../../Theme/variables' as v;
 
-.Hero {
+.ExercisePage-Hero {
   height: 800px;
   width: 100%;
   background-size: cover;
@@ -13,13 +13,14 @@
   align-items: center;
 
   h1 {
-    color: v.$black;
     margin-bottom: 20px;
+    @include v.theme() {
+      color: v.theme-get('default-opposite');
+    }
   }
 }
 
-.Bar {
-  background-color: v.$white;
+.ExercisePage-Bar {
   padding: 10px 20px;
   border-radius: 20px;
   display: flex;
@@ -34,14 +35,18 @@
     border: none;
     padding: 0 10px;
   }
+
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
+  }
 }
 
-.search {
+.ExercisePage-search {
   margin-left: 20px;
   cursor: pointer;
 }
 
-.content {
+.ExercisePage-content {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -49,7 +54,7 @@
   align-items: center;
 }
 
-.container {
+.ExercisePage-container {
   min-width: 85%;
   display: flex;
   flex-direction: row;

@@ -1,31 +1,35 @@
 @use '../../Theme/variables' as v;
 
-.main {
+.UserDetailsPage-main {
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
   object-fit: contain;
 }
 
-.overlay {
+.UserDetailsPage-overlay {
   width: 100%;
   height: 100vh;
   background-repeat: no-repeat;
   object-fit: contain;
-  background-color: rgb(17, 17, 17, 0.3);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @include v.theme() {
+    background-color: v.theme-get('default-medium');
+  }
 }
 
-.container {
+.UserDetailsPage-container {
   width: 60%;
   height: auto;
-  background-color: v.$white;
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
+  }
 }
 
-.content {
+.UserDetailsPage-content {
   padding: 50px;
 
   h1 {
@@ -44,7 +48,9 @@
     margin-bottom: 10px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(17, 17, 17, 0.1);
+    @include v.theme() {
+      background-color: v.theme-get('default-light');
+    }
   }
 
   button {
@@ -58,36 +64,42 @@
   }
 }
 
-.btnDiv {
+.UserDetailsPage-btnDiv {
   display: flex;
   flex-direction: row;
 }
 
-.btnSkip {
+.UserDetailsPage-btnSkip {
   margin-right: 10px;
-  background-color: v.$celeste;
-  color: v.$black;
+  @include v.theme() {
+    background-color: v.theme-get('tertiary2');
+    color: v.theme-get('default-color');
+  }
 }
 
-.btn {
+.UserDetailsPage-btn {
   margin-left: 10px;
-  background-color: v.$cadet;
-  color: v.$white;
+  @include v.theme() {
+    background-color: v.theme-get('primary1');
+    color: v.theme-get('default-opposite');
+  }
 }
 
-.loader::before {
+.UserDetailsPage-loader::before {
   content: '';
   box-sizing: border-box;
   display: inline-block;
   height: 150px;
   width: 150px;
   border-radius: 50%;
-  border: 12px solid v.$white;
   border-top-color: transparent;
   animation: spinner 0.7s linear infinite;
+  @include v.theme() {
+    border: 12px solid v.theme-get('default-opposite');
+  }
 }
 
-@keyframes spinner {
+@keyframes UserDetailsPage-spinner {
   to {
     transform: rotate(360deg);
   }

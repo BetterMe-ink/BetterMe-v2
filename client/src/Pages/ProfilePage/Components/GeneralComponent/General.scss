@@ -1,19 +1,23 @@
 @use '../../../../Theme/variables' as v;
 
-.main {
+.GeneralComponent-main {
   p {
-    color: v.$cadet;
     font-size: 1.25em;
+    @include v.theme() {
+      color: v.theme-get('primary1');
+    }
   }
 }
 
-.container {
+.GeneralComponent-container {
   width: 100%;
   height: auto;
-  background-color: v.$white;
+  @include v.theme() {
+    background-color: v.theme-get('default-opposite');
+  }
 }
 
-.content {
+.GeneralComponent-content {
   padding: 50px;
 
   h1 {
@@ -32,7 +36,9 @@
     margin-bottom: 10px;
     border: none;
     border-radius: 5px;
-    background-color: rgb(17, 17, 17, 0.1);
+    @include v.theme() {
+      background-color: v.theme-get('default-light');
+    }
   }
 
   button {
@@ -40,25 +46,30 @@
     padding: 20px;
     border-radius: 5px;
     border: none;
-    background-color: v.$cadet;
-    color: v.$white;
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
+    @include v.theme() {
+      background-color: v.theme-get('primary1');
+      color: v.theme-get('default-opposite');
+    }
   }
 }
 
-.account {
+.GeneralComponent-account {
   font-size: 0.7rem;
-  color: v.$pewter-blue;
   padding: 10px 50px;
   margin-top: 20px;
   padding-bottom: 30px;
-  border-bottom: 3px solid v.$black;
 
   h1 {
     padding: 5px 0;
     font-weight: normal;
+  }
+
+  @include v.theme() {
+    color: v.theme-get('secondary3');
+    border-bottom: 3px solid v.theme-get('default-color');
   }
 }
 

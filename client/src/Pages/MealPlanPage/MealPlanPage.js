@@ -1,22 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useEffect, useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import Cookie from 'js-cookie';
 import moment from 'moment';
 
-import Nav from "../../Components/Navigation/Navigation";
-import Footer from "../../Components/Footer/Footer";
+import Nav from '../../Components/Navigation/Navigation';
+import Footer from '../../Components/Footer/Footer';
 
-import style from "./MealPlanPage.module.scss";
+import './MealPlanPage.scss';
 // import '../../index.css';
 
-import exercise from "../../images/exercise.jpg";
-import placeholder from "../../images/placeHolder.png";
+import exercise from '../../images/exercise.jpg';
+import placeholder from '../../images/placeHolder.png';
 
 function MealPage() {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user.user);
+  const user = useSelector(state => state.user.user);
 
   let biscuit;
   if (Cookie.get('filledOut')) biscuit = Cookie.get('filledOut');
@@ -27,8 +27,8 @@ function MealPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!user) setTimeout(() => navigate("/signup"), 1000);
-    if (filledOut) setClose(true) 
+    if (!user) setTimeout(() => navigate('/signup'), 1000);
+    if (filledOut) setClose(true);
     else if (close) setClose(false);
 
     if (user) {
@@ -46,28 +46,31 @@ function MealPage() {
   const M3 = useRef(null);
 
   function getDateInSQLFormat() {
-    return new Date().toISOString().slice(0, 19).replace("T", " ");
+    return new Date()
+      .toISOString()
+      .slice(0, 19)
+      .replace('T', ' ');
   }
 
-  const rateHealth = (val) => {
-    if ( val <= 1000) {
-        return 'normal/ ok ish';
+  const rateHealth = val => {
+    if (val <= 1000) {
+      return 'normal/ ok ish';
     } else if (val <= 1300) {
-        return 'healthy';
+      return 'healthy';
     } else {
-        return 'Unhealthy/ bad ish';
+      return 'Unhealthy/ bad ish';
     }
-  }
+  };
 
-  const rateHealthC = (val) => {
-    if ( val <= 1000) {
-        return 'yellow';
+  const rateHealthC = val => {
+    if (val <= 1000) {
+      return 'yellow';
     } else if (val <= 1300) {
-        return 'green';
+      return 'green';
     } else {
-        return 'red';
+      return 'red';
     }
-  }
+  };
 
   const submitJournal = () => {
     // setLoading(true)
@@ -75,23 +78,23 @@ function MealPage() {
       .all([
         axios.get(
           `https://api.spoonacular.com/recipes/guessNutrition?title=${M1.current.value
-            .split(" ")
-            .join("+")}&apiKey=0f7da7b376034db9a8eaaff872a41ae7`
+            .split(' ')
+            .join('+')}&apiKey=0f7da7b376034db9a8eaaff872a41ae7`
         ),
         axios.get(
           `https://api.spoonacular.com/recipes/guessNutrition?title=${M2.current.value
-            .split(" ")
-            .join("+")}&apiKey=0f7da7b376034db9a8eaaff872a41ae7`
+            .split(' ')
+            .join('+')}&apiKey=0f7da7b376034db9a8eaaff872a41ae7`
         ),
         axios.get(
           `https://api.spoonacular.com/recipes/guessNutrition?title=${M3.current.value
-            .split(" ")
-            .join("+")}&apiKey=0f7da7b376034db9a8eaaff872a41ae7`
+            .split(' ')
+            .join('+')}&apiKey=0f7da7b376034db9a8eaaff872a41ae7`
         ),
       ])
-      .then((obj1) => {
+      .then(obj1 => {
         console.log(obj1);
-        localStorage.setItem("calories", JSON.stringify({ value: obj1 }));
+        localStorage.setItem('calories', JSON.stringify({ value: obj1 }));
         axios
           .post(`http://localhost:4000/foodEntry/${user.user_id}`, {
             meal1: M1.current.value,
@@ -104,7 +107,7 @@ function MealPage() {
               obj1[0].data.calories.value +
               obj1[1].data.calories.value +
               obj1[2].data.calories.value,
-            weight: "50kg",
+            weight: '50kg',
             date_created: getDateInSQLFormat(),
           })
           .then((res) => {
@@ -126,21 +129,21 @@ function MealPage() {
       });
   };
 
-  if (localStorage.getItem("calories")) localStorage.getItem("calories");
+  if (localStorage.getItem('calories')) localStorage.getItem('calories');
   console.log(food);
 
   return (
     <>
       <Nav />
-      <div className={style.main}>
+      <div className={'MealPlanPage-main'}>
         {/* { filledOut ?  */}
-        <div className={`${style.overlay} ${close ? style.close : ""}`}>
+        <div className={`${'MealPlanPage-overlay'} ${close ? 'MealPlanPage-close' : ""}`}>
           { loading ? (
-            <div className={style.loadingDiv}>
-                <div className={style.loader}></div>
+            <div className={'MealPlanPage-loadingDiv'}>
+                <div className={'MealPlanPage-loader'}></div>
             </div>
             ) :
-          <div className={style.popover}>
+          <div className={'MealPlanPage-popover'}>
             <h1>Food Journal</h1>
             <br />
             <br />
@@ -182,11 +185,17 @@ function MealPage() {
             <br />
             <br />
 
-            <div className={style.btnDiv}>
-              <button className={style.btnSkip} onClick={() => setClose(true)}>
+            <div className={'MealPlanPage-btnDiv'}>
+              <button
+                className={'MealPlanPage-btnSkip'}
+                onClick={() => setClose(true)}
+              >
                 Skip
               </button>
-              <button className={style.btn} onClick={() => submitJournal()}>
+              <button
+                className={'MealPlanPage-btn'}
+                onClick={() => submitJournal()}
+              >
                 Submit
               </button>
             </div>
@@ -195,15 +204,15 @@ function MealPage() {
         </div>
         {/* : '' } */}
         <div
-          className={style.backDrop}
+          className={'MealPlanPage-backDrop'}
           style={{
-            backgroundSize: "cover",
+            backgroundSize: 'cover',
             backgroundImage: `url(${exercise})`,
           }}
         />
-        <div className={style.container}>
-          <div className={style.containerTitle}>
-            <div className={style.titleDiv}>
+        <div className={'MealPlanPage-container'}>
+          <div className={'MealPlanPage-containerTitle'}>
+            <div className={'MealPlanPage-titleDiv'}>
               <br />
               <h1>Welcome to Your Food Journal</h1>
               <br />
@@ -276,51 +285,50 @@ function MealPage() {
                       { food && food.length > 0 && food[food.length - 1].meal1 ? food.map((f, idx) =>{
                             const m = moment(f.date_created).format('dddd')
                         return (
-                        <tr key={idx}>
-
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="flex items-center">
-                              <div className="flex-shrink-0 h-10 w-10">
-                                <img
-                                  className="h-10 w-10 rounded-full"
-                                  src={placeholder}
-                                  alt="placeholder"
-                                />
-                              </div>
-                              <div className="ml-4">
-                                <div className="text-sm text-gray-500">
-                                  {user.username}
+                          <tr key={idx}>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <div className="flex items-center">
+                                <div className="flex-shrink-0 h-10 w-10">
+                                  <img
+                                    className="h-10 w-10 rounded-full"
+                                    src={placeholder}
+                                    alt="placeholder"
+                                  />
+                                </div>
+                                <div className="ml-4">
+                                  <div className="text-sm text-gray-500">
+                                    {user.username}
+                                  </div>
                                 </div>
                               </div>
-                            </div>
-                          </td>
+                            </td>
 
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm text-gray-900">
-                              {f.meal1}
-                            </div>
-                            <div className="text-sm font-medium text-gray-900">
-                              {f.meal1_cfp}
-                            </div>
-                          </td>
-                          
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm text-gray-900">
-                              {f.meal2}
-                            </div>
-                            <div className="text-sm font-medium text-gray-900">
-                              {f.meal2_cfp}
-                            </div>
-                          </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <div className="text-sm text-gray-900">
+                                {f.meal1}
+                              </div>
+                              <div className="text-sm font-medium text-gray-900">
+                                {f.meal1_cfp}
+                              </div>
+                            </td>
 
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm text-gray-900">
-                              {f.meal3}
-                            </div>
-                            <div className="text-sm font-medium text-gray-900">
-                              {f.meal3_cfp}
-                            </div>
-                          </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <div className="text-sm text-gray-900">
+                                {f.meal2}
+                              </div>
+                              <div className="text-sm font-medium text-gray-900">
+                                {f.meal2_cfp}
+                              </div>
+                            </td>
+
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <div className="text-sm text-gray-900">
+                                {f.meal3}
+                              </div>
+                              <div className="text-sm font-medium text-gray-900">
+                                {f.meal3_cfp}
+                              </div>
+                            </td>
 
                           <td className="px-6 py-4 whitespace-nowrap">
                             <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-${rateHealthC(f.total_calories)}-100 text-${rateHealthC(f.total_calories)}-800`}>
@@ -328,11 +336,11 @@ function MealPage() {
                             </span>
                           </td>
 
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="text-sm text-gray-900">
-                              {f.total_calories}g
-                            </div>
-                          </td>
+                            <td className="px-6 py-4 whitespace-nowrap">
+                              <div className="text-sm text-gray-900">
+                                {f.total_calories}g
+                              </div>
+                            </td>
 
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="text-sm text-gray-900">
