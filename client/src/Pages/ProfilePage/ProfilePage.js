@@ -51,27 +51,27 @@ function ProfilePage() {
           <h2>{user ? user.fullname : ''}</h2>
           <div className={'ProfilePage-actions'}>
             <div className={`${active === 'General' ? 'ProfilePage-active' : ''}`} onClick={() => setActive('General')}>
-              <Icon path={mdiFlowerTulip} size={1.5} className={'ProfilePage-iconSvg'} />
+              <Icon color={'white'} path={mdiFlowerTulip} size={1.5} className={'ProfilePage-iconSvg'} />
               <p>General</p>
             </div>
 
             <div className={`${active === 'Settings' ? 'ProfilePage-active' : ''}`} onClick={() => setActive('Settings')}>
-              <Icon path={mdiCogOutline} size={1.5} className={'ProfilePage-iconSvg'} />
+              <Icon color={'white'} path={mdiCogOutline} size={1.5} className={'ProfilePage-iconSvg'} />
               <p>Settings</p>
             </div>
 
             <div className={`${active === 'Account' ? 'ProfilePage-active' : ''}`} onClick={() => setActive('Account')}>
-              <Icon path={mdiAccountCogOutline} size={1.5} className={'iconSvg'} />
+              <Icon color={'white'} path={mdiAccountCogOutline} size={1.5} className={'iconSvg'} />
               <p>Account</p>
             </div>
 
             <div className={`${active === 'Help' ? 'ProfilePage-active' : ''}`} onClick={() => setActive('Help')}>
-              <Icon path={mdiHelpCircleOutline} size={1.5} className={'iconSvg'} />
+              <Icon color={'white'} path={mdiHelpCircleOutline} size={1.5} className={'iconSvg'} />
               <p>Help</p>
             </div>
 
             <div className={`${active === 'Privacy' ? 'ProfilePage-active' : ''}`} onClick={() => setActive('Privacy')}>
-              <Icon path={mdiCookieCogOutline} size={1.5} className={'ProfilePage-iconSvg'} />
+              <Icon color={'white'} path={mdiCookieCogOutline} size={1.5} className={'ProfilePage-iconSvg'} />
               <p>Privacy & Safety</p>
             </div>
           </div>

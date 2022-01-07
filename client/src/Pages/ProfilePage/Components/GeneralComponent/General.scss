@@ -12,6 +12,8 @@
 .GeneralComponent-container {
   width: 100%;
   height: auto;
+  margin-bottom: 50px;
+  
   @include v.theme() {
     background-color: v.theme-get('default-opposite');
   }
