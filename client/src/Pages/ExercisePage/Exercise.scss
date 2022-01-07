@@ -14,6 +14,9 @@
 
   h1 {
     margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: bold;
+
     @include v.theme() {
       color: v.theme-get('default-opposite');
     }

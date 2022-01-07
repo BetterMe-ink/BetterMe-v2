@@ -14,8 +14,11 @@
 
   h1 {
     margin-bottom: 20px;
+    font-size: 2em;
+    font-weight: bold;
+
     @include v.theme() {
-      color: v.theme-get('default-color');
+      color: v.theme-get('default-opposite');
     }
   }
 }
@@ -37,7 +40,7 @@
   }
 
   @include v.theme() {
-    background-color: v.theme-get('default-medium');
+    background-color: v.theme-get('default-opposite');
   }
 }
 
