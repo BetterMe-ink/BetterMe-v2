@@ -6,15 +6,14 @@ const userController = {};
 
 userController.login = (req, res, next) => {
   const { username, password } = req.body;
-  
   const q = "SELECT * FROM users WHERE username=($1)";
 
   db.query(q, [username], (err, data) => {
     if (err) return next(err);
     if (data.rows.length > 0) {
       bcrypt.compare(password, data.rows[0].password) 
-      .then((err, result) => {
-        if(err) return next(err)
+      .then((result) => {
+
         if(result){
           res.locals.message = "successfully logged in";
           const {user_id, fullname, username, email, date_joined} = data.rows[0]
@@ -23,6 +22,8 @@ userController.login = (req, res, next) => {
             httpOnly: false,
           });
           return next()
+        } else {
+          next(e)
         }
       })
     } else {
@@ -30,8 +31,8 @@ userController.login = (req, res, next) => {
       return next()
     }
   })
-  res.locals.error = "wrong username"
-  return next()
+  // res.locals.error = "wrong username"
+  // return next()
 }
 
 userController.signup = (req, res, next) => {
@@ -65,7 +66,7 @@ userController.signup = (req, res, next) => {
           }
         }
     })
-  } catch(err){
+  } catch(err) {
     return next(err);
   }
 };
