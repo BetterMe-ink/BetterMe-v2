@@ -9,8 +9,7 @@ router.post("/", userController.signup, (req, res) => {
 router.post("/login", userController.login, (req, res) => {
   if (res.locals.message) {
     res.status(200).json({ message: res.locals.message });
-  }
-  if (res.locals.error) {
+  } else if (res.locals.error) {
     res.status(400).json({ error: res.locals.error });
   }
 });
