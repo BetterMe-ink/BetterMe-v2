@@ -2,12 +2,13 @@
 
 .ProfilePage-sideBar {
   width: 30%;
-  height: 130vh;
+  height: 100vh;
   // background-color: v.$cadet;
   display: flex;
   flex-direction: column;
   // justify-content: center;
   align-items: center;
+  overflow-y: scroll;
 
   h1 {
     margin-top: 130px;
@@ -142,6 +143,8 @@ input:checked + .slider:before {
   align-items: center;
   text-align: center;
   width: 100%;
+  // height: 100vh;
+  overflow-y: auto;
 
   p {
     font-size: 1.35rem;
@@ -161,6 +164,7 @@ input:checked + .slider:before {
       padding-bottom: 40px;
       padding-top: 40px;
       cursor: pointer;
+      
   }
 
   div:hover {
@@ -169,6 +173,14 @@ input:checked + .slider:before {
     }
   }
 }
+
+// .fstAct {
+//   margin-top: 240px
+// }
+
+// .lstAct {
+//   margin-bottom: 50px;
+// }
 
 .ProfilePage-active {
   @include v.theme() {

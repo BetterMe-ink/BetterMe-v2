@@ -50,7 +50,7 @@ function ProfilePage() {
 
           <h2>{user ? user.fullname : ''}</h2>
           <div className={'ProfilePage-actions'}>
-            <div className={`${active === 'General' ? 'ProfilePage-active' : ''}`} onClick={() => setActive('General')}>
+            <div className={`fstAct ${active === 'General' ? 'ProfilePage-active' : ''}`} onClick={() => setActive('General')}>
               <Icon color={'white'} path={mdiFlowerTulip} size={1.5} className={'ProfilePage-iconSvg'} />
               <p>General</p>
             </div>
@@ -70,7 +70,7 @@ function ProfilePage() {
               <p>Help</p>
             </div>
 
-            <div className={`${active === 'Privacy' ? 'ProfilePage-active' : ''}`} onClick={() => setActive('Privacy')}>
+            <div className={`lstAct ${active === 'Privacy' ? 'ProfilePage-active' : ''}`} onClick={() => setActive('Privacy')}>
               <Icon color={'white'} path={mdiCookieCogOutline} size={1.5} className={'ProfilePage-iconSvg'} />
               <p>Privacy & Safety</p>
             </div>
