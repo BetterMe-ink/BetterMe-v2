@@ -27,6 +27,8 @@ function MealPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    let mounted = true;
+
     if (!user) setTimeout(() => navigate('/signup'), 1000);
     if (filledOut) setClose(true);
     else if (close) setClose(false);
@@ -35,9 +37,15 @@ function MealPage() {
       axios
         .get(`http://localhost:4000/foodEntry/${user.user_id}`)
         .then((res) => {
-            console.log(res)
-            if (res.data !== 'No entries found') setFood((prev) => [...prev, ...res.data]);
+            console.log('meal')
+            if (mounted) {
+              if (res.data !== 'No entries found') setFood((prev) => [...prev, ...res.data]);
+            }
         });
+    }
+
+    return () => {
+      mounted = false;
     }
   }, [user]);
 
