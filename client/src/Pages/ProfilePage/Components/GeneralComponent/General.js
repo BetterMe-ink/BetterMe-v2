@@ -17,13 +17,19 @@ function General() {
   const Favorite = useRef(null);
 
   useEffect(() => {
+    let mounted = true;
+
     if (user) {
       axios
         .get(`http://localhost:4000/users/details/${user.user_id}`)
         .then((res) => {
-          setUserDetails(res.data);
+          if (mounted) setUserDetails(res.data);
         })
         .catch((err) => console.log(err));
+    }
+
+    return () => {
+      mounted = false;
     }
   }, [user]);
 
